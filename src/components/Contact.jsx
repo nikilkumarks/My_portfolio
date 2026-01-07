@@ -1,29 +1,32 @@
-import { Mail, PhoneCall } from "lucide-react";
+import { Mail, PhoneCall, Send, Loader2 } from "lucide-react";
 import { useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 const Contact = () => {
-  const form = useRef();
-  const [isSent, setIsSent] = useState(false);
+  const formRef = useRef();
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setStatus("sending");
 
     emailjs
       .sendForm(
-        "your_service_id",      // Replace with your EmailJS Service ID
-        "your_template_id",     // Replace with your EmailJS Template ID
-        form.current,
-        "your_public_key"       // Replace with your EmailJS Public Key
+        "your_service_id",     // replace
+        "your_template_id",    // replace
+        formRef.current,
+        "your_public_key"      // replace
       )
       .then(
-        (result) => {
-          console.log(result.text);
-          setIsSent(true);
-          form.current.reset();
+        () => {
+          setStatus("success");
+          formRef.current.reset();
+          setTimeout(() => setStatus("idle"), 4000);
         },
-        (error) => {
-          console.log(error.text);
+        () => {
+          setStatus("error");
+          setTimeout(() => setStatus("idle"), 4000);
         }
       );
   };
@@ -31,91 +34,184 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen px-6 py-12 bg-[#0e0e10] text-white relative overflow-hidden"
+      className="relative min-h-screen px-6 sm:px-10 lg:px-24 py-28 bg-[#0e0e10] text-white overflow-hidden"
     >
-      <h2 className="text-4xl font-bold text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-500 animate-pulse">
-        Contact Me
-      </h2>
+      {/* Ambient background */}
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-indigo-500/10 blur-3xl rounded-full" />
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-pink-500/10 blur-3xl rounded-full" />
 
-      <div className="max-w-xl mx-auto bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-lg transition-all duration-500">
-        <p className="text-center text-gray-400 mb-6">
-          Have an idea or opportunity? Let’s collaborate!
-        </p>
+      <div className="relative z-10 max-w-6xl mx-auto">
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center text-4xl sm:text-5xl font-extrabold mb-6
+          bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500
+          text-transparent bg-clip-text"
+        >
+          Let’s Connect
+        </motion.h2>
 
-        <form ref={form} onSubmit={sendEmail} className="space-y-6">
-          <div>
-            <label htmlFor="name" className="block mb-1 text-sm text-gray-300">
-              Name
-            </label>
-            <input
-              type="text"
-              name="user_name"
-              placeholder="Your Name"
-              className="w-full px-4 py-2 rounded-md bg-[#1a1a1a] border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
-              required
-            />
-          </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          viewport={{ once: true }}
+          className="text-center text-gray-400 max-w-2xl mx-auto mb-20"
+        >
+          Have a project, freelance requirement, or full-time opportunity?  
+          I’d love to hear from you.
+        </motion.p>
 
-          <div>
-            <label htmlFor="email" className="block mb-1 text-sm text-gray-300">
-              Email
-            </label>
-            <input
-              type="email"
-              name="user_email"
-              placeholder="you@example.com"
-              className="w-full px-4 py-2 rounded-md bg-[#1a1a1a] border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor="message" className="block mb-1 text-sm text-gray-300">
-              Message
-            </label>
-            <textarea
-              name="message"
-              rows="4"
-              placeholder="Let’s build something amazing..."
-              className="w-full px-4 py-2 rounded-md bg-[#1a1a1a] border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
-              required
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full py-2 rounded-md font-semibold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:opacity-90 transition duration-300 shadow-md"
+        {/* Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl p-8 shadow-xl hover:border-indigo-400/30 transition"
           >
-            Send Message
-          </button>
+            <h3 className="text-2xl font-semibold mb-6">
+              Contact Information
+            </h3>
 
-          {isSent && (
-            <p className="text-green-400 text-sm mt-4 text-center animate-pulse">
-              ✅ Message sent successfully!
+            <div className="space-y-5 text-gray-300">
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-indigo-400" />
+                <a
+                  href="mailto:nikilkumark.s19601@gmail.com"
+                  className="hover:text-white transition"
+                >
+                  nikilkumark.s19601@gmail.com
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <PhoneCall className="w-5 h-5 text-indigo-400" />
+                <a
+                  href="tel:+916363719601"
+                  className="hover:text-white transition"
+                >
+                  +91 63637 19601
+                </a>
+              </div>
+            </div>
+
+            <p className="mt-8 text-sm text-gray-400 leading-relaxed">
+              I usually respond within <span className="text-white">24 hours</span>.  
+              Open to freelance projects, internships, and full-time roles.
             </p>
-          )}
-        </form>
+          </motion.div>
 
-        {/* Contact Info */}
-        <div className="mt-8 text-center text-gray-400">
-          <p className="flex justify-center items-center gap-2">
-            <Mail className="w-5 h-5 text-indigo-400" />
-            <a href="mailto:your.nikilkumark.s19601@gmail.com" className="hover:text-white transition">
-              nikilkumark.s19601@gmail.com
-            </a>
-          </p>
-          <p className="flex justify-center items-center gap-2 mt-2">
-            <PhoneCall className="w-5 h-5 text-indigo-400" />
-            <a href="tel:+916363719601" className="hover:text-white transition">
-              +91-6363719601
-            </a>
-          </p>
+          {/* Contact Form */}
+          <motion.form
+            ref={formRef}
+            onSubmit={sendEmail}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl p-8 shadow-xl space-y-6 hover:border-purple-400/30 transition"
+          >
+            {["Name", "Email"].map((label, i) => (
+              <div key={i}>
+                <label className="block text-sm text-gray-300 mb-1">
+                  {label}
+                </label>
+                <input
+                  type={label === "Email" ? "email" : "text"}
+                  name={label === "Email" ? "user_email" : "user_name"}
+                  required
+                  placeholder={`Your ${label.toLowerCase()}`}
+                  className="w-full px-4 py-2.5 rounded-md bg-[#1a1a1a]
+                  border border-white/10 text-white placeholder-gray-500
+                  focus:ring-2 focus:ring-indigo-500 outline-none transition"
+                />
+              </div>
+            ))}
+
+            <div>
+              <label className="block text-sm text-gray-300 mb-1">
+                Message
+              </label>
+              <textarea
+                name="message"
+                rows="4"
+                required
+                placeholder="Tell me about your idea or opportunity..."
+                className="w-full px-4 py-2.5 rounded-md bg-[#1a1a1a]
+                border border-white/10 text-white placeholder-gray-500
+                focus:ring-2 focus:ring-indigo-500 outline-none transition"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-md font-semibold
+              bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600
+              hover:opacity-90 active:scale-[0.98]
+              transition shadow-md disabled:opacity-60"
+            >
+              {status === "sending" ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  Send Message
+                  <Send className="w-4 h-4" />
+                </>
+              )}
+            </button>
+
+            {/* Toast Feedback */}
+            <AnimatePresence>
+              {status === "success" && (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute -bottom-10 left-1/2 -translate-x-1/2
+                  text-green-400 text-sm"
+                >
+                  ✅ Message sent successfully!
+                </motion.p>
+              )}
+
+              {status === "error" && (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute -bottom-10 left-1/2 -translate-x-1/2
+                  text-red-400 text-sm"
+                >
+                  ❌ Something went wrong. Try again later.
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </motion.form>
         </div>
       </div>
 
-      {/* Background glow effects */}
-      <div className="absolute -top-10 -left-10 w-80 h-80 bg-indigo-500 opacity-20 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-pink-500 opacity-20 rounded-full blur-3xl animate-pulse"></div>
+      {/* Copyright */}
+      <footer className="mt-32 pt-8 border-t border-white/10 text-center text-sm text-gray-400">
+        <p>
+          © {new Date().getFullYear()}{" "}
+          <span className="text-white font-medium">
+            Nikil Kumar K S
+          </span>. {/*All rights reserved.*/}
+        </p>
+        <p className="mt-2 text-xs text-gray-500">
+          Built with React, Tailwind CSS & Framer Motion
+        </p>
+      </footer>
     </section>
   );
 };
