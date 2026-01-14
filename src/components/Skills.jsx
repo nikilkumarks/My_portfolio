@@ -112,9 +112,6 @@ const Skills = () => {
         ))}
       </div>
 
-      {/* Background Blobs */}
-      <div className="absolute -top-32 -left-32 w-[320px] h-[320px] bg-purple-500/20 blur-3xl rounded-full animate-pulse" />
-      <div className="absolute -bottom-32 -right-32 w-[320px] h-[320px] bg-cyan-400/20 blur-3xl rounded-full animate-pulse" />
     </section>
   );
 };

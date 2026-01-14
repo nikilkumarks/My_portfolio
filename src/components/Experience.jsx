@@ -34,9 +34,7 @@ const Experience = () => {
       id="experience"
       className="relative py-28 px-6 sm:px-10 lg:px-20 bg-[#0e0e10] text-white min-h-screen overflow-hidden"
     >
-      {/* Background accents */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-purple-500/10 blur-3xl rounded-full" />
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-indigo-500/10 blur-3xl rounded-full" />
+
 
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Heading */}

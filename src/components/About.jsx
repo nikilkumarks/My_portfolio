@@ -4,12 +4,8 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative min-h-screen px-6 sm:px-10 lg:px-24 py-28 bg-[#0e0e10] text-white flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen px-6 sm:px-10 lg:px-24 py-28 bg-[#0e0e10] text-white flex items-center justify-center"
     >
-      {/* Ambient background accents */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-cyan-500/10 blur-3xl rounded-full" />
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-purple-500/10 blur-3xl rounded-full" />
-
       <div className="relative z-10 max-w-6xl w-full">
         {/* Heading */}
         <motion.h2
@@ -35,7 +31,7 @@ const About = () => {
           Building scalable, user-focused web applications from frontend to backend
         </motion.p>
 
-        {/* Accent divider */}
+        {/* Divider */}
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: "96px" }}
@@ -44,15 +40,15 @@ const About = () => {
           className="mx-auto mb-14 h-[3px] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full"
         />
 
-        {/* Main Content Grid */}
+        {/* Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left: Story Card */}
+          {/* Left: Story */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-10 shadow-xl"
+            className="lg:col-span-2 bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-10 shadow-xl"
           >
             <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
               I’m a passionate{" "}
@@ -60,25 +56,22 @@ const About = () => {
                 Full-Stack Developer
               </span>{" "}
               who enjoys building complete web applications — from polished user
-              interfaces to secure, scalable backend systems. I care deeply about
-              performance, maintainability, and real-world usability.
+              interfaces to secure, scalable backend systems.
             </p>
 
             <p className="mt-6 text-base sm:text-lg text-gray-300 leading-relaxed">
               On the frontend, I work with{" "}
               <span className="text-cyan-400 font-medium">React.js</span>,{" "}
               <span className="text-cyan-400 font-medium">Tailwind CSS</span>, and
-              modern component-driven design systems to create responsive and
-              intuitive user experiences.
+              modern component-driven design systems.
             </p>
 
             <p className="mt-6 text-base sm:text-lg text-gray-300 leading-relaxed">
-              On the backend, I design and build RESTful APIs using{" "}
+              On the backend, I design RESTful APIs using{" "}
               <span className="text-cyan-400 font-medium">
                 Node.js & Express
               </span>{" "}
-              and work with databases to manage application data, authentication,
-              and business logic reliably.
+              and manage authentication, data, and business logic.
             </p>
 
             <p className="mt-6 text-base sm:text-lg text-gray-300 leading-relaxed">
@@ -86,7 +79,7 @@ const About = () => {
               <span className="text-white font-semibold">
                 SaaS platforms, dashboards, and full-stack products
               </span>{" "}
-              where clean architecture and thoughtful UX make a real impact.
+              where clean architecture and thoughtful UX matter.
             </p>
           </motion.div>
 
@@ -98,8 +91,8 @@ const About = () => {
             viewport={{ once: true }}
             className="flex flex-col gap-6"
           >
-            {/* Role Chips */}
-            <div className="backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl p-6 shadow-xl">
+            {/* Focus */}
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-xl">
               <h3 className="text-lg font-semibold mb-4 text-white">
                 Core Focus
               </h3>
@@ -121,7 +114,7 @@ const About = () => {
               </div>
             </div>
 
-            {/* Quick Stats */}
+            {/* Stats */}
             <div className="grid grid-cols-2 gap-4">
               {[
                 { label: "Projects Built", value: "10+" },
@@ -131,7 +124,7 @@ const About = () => {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="backdrop-blur-lg bg-white/5 border border-white/10 rounded-xl p-4 text-center shadow-md"
+                  className="bg-white/5 border border-white/10 rounded-xl p-4 text-center shadow-md"
                 >
                   <p className="text-xl font-bold text-white">
                     {stat.value}

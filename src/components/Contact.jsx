@@ -13,10 +13,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "your_service_id",     // replace
-        "your_template_id",    // replace
+        "service_x9j0fae",     // replace
+        "template_yjjrido",    // replace
         formRef.current,
-        "your_public_key"      // replace
+        "1J563XOsUDdsmxZCP"      // replace
       )
       .then(
         () => {
@@ -36,9 +36,6 @@ const Contact = () => {
       id="contact"
       className="relative min-h-screen px-6 sm:px-10 lg:px-24 py-28 bg-[#0e0e10] text-white overflow-hidden"
     >
-      {/* Ambient background */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-indigo-500/10 blur-3xl rounded-full" />
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-pink-500/10 blur-3xl rounded-full" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Heading */}
@@ -153,7 +150,7 @@ const Contact = () => {
               type="submit"
               disabled={status === "sending"}
               className="w-full flex items-center justify-center gap-2 py-3 rounded-md font-semibold
-              bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600
+              bg-gradient-to-r from-indigo-600 via-purple-600 to-purple-600
               hover:opacity-90 active:scale-[0.98]
               transition shadow-md disabled:opacity-60"
             >

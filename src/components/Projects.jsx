@@ -16,7 +16,7 @@ const projects = [
     type: "Frontend",
     featured: true,
     description:
-      "A modern, responsive car showcase platform with smooth animations and immersive browsing experience.",
+      "A modern, responsive car showcase platform with smooth animations and an immersive browsing experience.",
     tech: ["React", "Vite", "JavaScript", "Tailwind"],
     github: "https://github.com/nikilkumarks/Cars_Website",
     live: "https://remarkable-froyo-196aab.netlify.app/",
@@ -34,25 +34,33 @@ const projects = [
     title: "E-Commerce Website",
     type: "Frontend",
     description:
-      "A dynamic e-commerce website featuring product listings, cart functionality, and responsive UI.",
+      "A dynamic e-commerce website featuring product listings, cart functionality, and a responsive UI.",
     tech: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/nikilkumarks/E-Commerc",
     live: "https://e-commerc-seven.vercel.app/",
   },
   {
-    title: "Netflix UI Clone",
-    type: "Frontend",
+    title: "Stem",
+    type: "Full-Stack",
     description:
-      "A Netflix-inspired UI clone with dark theme, smooth animations, and responsive layout.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    github: "https://github.com/nikilkumarks/Netflix-home-Page-Clone",
-    live: "https://netflix-home-page-clone-nu.vercel.app/",
+      "A real-time chat application enabling secure one-to-one communication with instant messaging and a clean, responsive UI.",
+    tech: [
+      "React",
+      "Tailwind CSS",
+      "Zustand",
+      "TanStack Query",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
+    github: "https://github.com/nikilkumarks/Stem",
+    live: "https://stem-o0zn.onrender.com/",
   },
   {
     title: "Music Streaming Web App",
     type: "Frontend",
     description:
-      "A music streaming interface with play/pause controls, trending tracks, and modern UI.",
+      "A music streaming interface with play/pause controls, trending tracks, and a modern UI.",
     tech: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/nikilkumarks/Heavenly_music",
     live: "https://harmonicheavenofmusic.vercel.app/",
@@ -76,7 +84,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative min-h-screen px-6 sm:px-10 lg:px-20 py-28 bg-[#0e0e10] text-white overflow-hidden"
+      className="min-h-screen px-6 sm:px-10 lg:px-20 py-28 bg-[#0e0e10] text-white"
     >
       {/* Heading */}
       <motion.h2
@@ -102,7 +110,7 @@ const Projects = () => {
         my ability to design, build, and ship real-world applications.
       </motion.p>
 
-      {/* Grid */}
+      {/* Projects Grid */}
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
         {projects.map((project, index) => (
           <motion.div
@@ -112,21 +120,19 @@ const Projects = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={cardVariants}
-            whileHover={{ y: -10 }}
-            className={`group relative backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl p-6 shadow-xl transition-all ${
+            whileHover={{ y: -8, scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 220, damping: 20 }}
+            className={`bg-white/5 border border-white/10 rounded-2xl p-6 shadow-md hover:border-white/30 transition ${
               project.featured ? "lg:col-span-2" : ""
             }`}
           >
-            {/* Hover Gradient */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition pointer-events-none" />
-
             {/* Badge */}
             <span className="inline-block mb-3 px-3 py-1 text-xs rounded-full bg-white/10 border border-white/10 text-gray-300">
               {project.type}
             </span>
 
             {/* Title */}
-            <h3 className="text-xl font-semibold mb-3 group-hover:text-indigo-400 transition">
+            <h3 className="text-xl font-semibold mb-3">
               {project.title}
             </h3>
 
@@ -135,7 +141,7 @@ const Projects = () => {
               {project.description}
             </p>
 
-            {/* Tech */}
+            {/* Tech Stack */}
             <div className="flex flex-wrap gap-2 mb-6">
               {project.tech.map((tech) => (
                 <span
@@ -172,10 +178,6 @@ const Projects = () => {
           </motion.div>
         ))}
       </div>
-
-      {/* Background */}
-      <div className="absolute -top-32 -left-32 w-[300px] h-[300px] bg-purple-500/20 blur-3xl rounded-full" />
-      <div className="absolute -bottom-32 -right-32 w-[300px] h-[300px] bg-indigo-500/20 blur-3xl rounded-full" />
     </section>
   );
 };

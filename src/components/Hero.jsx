@@ -8,9 +8,7 @@ const Hero = () => {
   const [darkMode] = useState(true);
 
   const scrollToAbout = () => {
-    document
-      .getElementById("about")
-      ?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -20,10 +18,6 @@ const Hero = () => {
         darkMode ? "bg-[#0e0e10] text-white" : "bg-white text-black"
       }`}
     >
-      {/* Ambient Gradient Blobs */}
-      <div className="absolute -top-40 -left-40 w-[400px] h-[400px] bg-indigo-600/30 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute -bottom-40 -right-40 w-[400px] h-[400px] bg-purple-600/30 rounded-full blur-3xl animate-ping" />
-
       {/* Content */}
       <motion.div
         className="relative z-10 max-w-7xl w-full flex flex-col md:flex-row items-center gap-12 md:gap-20"
@@ -34,15 +28,14 @@ const Hero = () => {
         {/* Profile Image */}
         <motion.div
           className="relative flex-shrink-0"
-          initial={{ scale: 0.85, opacity: 0 }}
+          initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 blur-xl opacity-60 animate-pulse" />
           <img
             src={profileImage}
             alt="Nikil Kumar K S"
-            className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-indigo-500 shadow-2xl"
+            className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full object-cover border-4 border-indigo-500 shadow-xl"
           />
         </motion.div>
 
@@ -91,8 +84,8 @@ const Hero = () => {
             transition={{ delay: 0.6 }}
           >
             Hi, I’m <strong>Nikil Kumar K S</strong> — a full-stack developer
-            specializing in building end-to-end web applications using
-            <strong> React, Node.js, Express, and databases</strong>. I focus on
+            specializing in building end-to-end web applications using{" "}
+            <strong>React, Node.js, Express, and databases</strong>. I focus on
             performance, scalability, and real-world problem solving.
           </motion.p>
 
