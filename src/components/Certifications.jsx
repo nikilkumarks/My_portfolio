@@ -24,7 +24,7 @@ const Certification = () => {
           Certifications
         </h2>
 
-        <div className="space-y-8">
+        <div className="space-y-8">  
           {certifications.map((cert, idx) => (
             <motion.div
               key={idx}

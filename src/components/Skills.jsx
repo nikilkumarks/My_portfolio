@@ -20,7 +20,7 @@ import {
   SiExpress,
   SiMongodb,
   SiNetlify,
-  SiVercel,
+  SiVercel,  
   SiRender,
   SiDaisyui,
 } from "react-icons/si";

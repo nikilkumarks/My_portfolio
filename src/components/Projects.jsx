@@ -22,7 +22,7 @@ const projects = [
     live: "https://remarkable-froyo-196aab.netlify.app/",
   },
   {
-    title: "Namma Suraksha – Hackathon Project",
+    title: "Namma Suraksha – Hackathon Project",  
     type: "Full-Stack",
     featured: true,
     description:

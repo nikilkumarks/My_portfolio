@@ -18,7 +18,7 @@ const Hero = () => {
         darkMode ? "bg-[#0e0e10] text-white" : "bg-white text-black"
       }`}
     >
-      {/* Content */}
+      {/* Content */}  
       <motion.div
         className="relative z-10 max-w-7xl w-full flex flex-col md:flex-row items-center gap-12 md:gap-20"
         initial={{ opacity: 0, y: 50 }}

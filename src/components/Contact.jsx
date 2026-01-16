@@ -16,7 +16,7 @@ const Contact = () => {
         "service_x9j0fae",     // replace
         "template_yjjrido",    // replace
         formRef.current,
-        "1J563XOsUDdsmxZCP"      // replace
+        "1J563XOsUDdsmxZCP"      // replace  
       )
       .then(
         () => {

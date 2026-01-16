@@ -16,7 +16,7 @@ const experiences = [
   },
   {
     role: "Freelance Web Developer",
-    company: "Self-Employed",
+    company: "Self-Employed",  
     duration: "2025 – 2025",
     highlights: [
       "Delivered custom websites and web apps for multiple clients.",
