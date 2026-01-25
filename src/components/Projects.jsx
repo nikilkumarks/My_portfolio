@@ -40,10 +40,10 @@ const projects = [
     live: "https://e-commerc-seven.vercel.app/",
   },
   {
-    title: "Stem",
+    title: "Stem - Real-Time Chat Application (Full Stack)",
     type: "Full-Stack",
     description:
-      "A real-time chat application enabling secure one-to-one communication with instant messaging and a clean, responsive UI.",
+      "STEM is a full-stack real-time chat and video calling application built with the MERN stack. It enables instant one-to-one messaging and peer-to-peer video communication using real-time technologies, along with JWT-based authentication, live presence tracking, typing indicators, and read receipts. The system is designed with scalable REST APIs and an optimized MongoDB database, simulating a modern real-time communication platform.",
     tech: [
       "React",
       "Tailwind CSS",
@@ -57,13 +57,13 @@ const projects = [
     live: "https://stem-o0zn.onrender.com/",
   },
   {
-    title: "Music Streaming Web App",
-    type: "Frontend",
+    title: "ATS Checker - AI-Powered ATS Resume Analyzer & Builder (Full Stack + AI)",
+    type: "Full-Stack",
     description:
-      "A music streaming interface with play/pause controls, trending tracks, and a modern UI.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    github: "https://github.com/nikilkumarks/Heavenly_music",
-    live: "https://harmonicheavenofmusic.vercel.app/",
+      "A full-stack web application that helps users create ATS-friendly resumes, analyze resume performance against job descriptions, and improve content using AI-powered suggestions. This platform acts as a SaaS product with user and admin dashboards.",
+    tech: ["React", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Cohere AI"],
+    github: "https://github.com/nikilkumarks/ATS_Checker",
+    live: " https://ats-checker-vbuy.onrender.com/",
   },
 ];
 
