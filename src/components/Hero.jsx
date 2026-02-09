@@ -14,11 +14,10 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className={`relative min-h-screen w-full flex items-center justify-center px-5 sm:px-10 xl:px-24 overflow-hidden ${
-        darkMode ? "bg-[#0e0e10] text-white" : "bg-white text-black"
-      }`}
+      className={`relative min-h-screen w-full flex items-center justify-center px-5 sm:px-10 xl:px-24 overflow-hidden ${darkMode ? "bg-[#0e0e10] text-white" : "bg-white text-black"
+        }`}
     >
-      {/* Content */}  
+      {/* Content */}
       <motion.div
         className="relative z-10 max-w-7xl w-full flex flex-col md:flex-row items-center gap-12 md:gap-20"
         initial={{ opacity: 0, y: 50 }}
