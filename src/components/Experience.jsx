@@ -4,23 +4,39 @@ import { motion } from "framer-motion";
 const experiences = [
   {
     role: "Frontend Developer Intern",
+    company: "Innovgeist",
+    duration: "Jan 2026 – Present",
+    current: true,
+    highlights: [
+      "Leading frontend development for scalable SaaS applications.",
+      "Built dynamic multi-step payment and dashboard flows using React.",
+      "Improved performance using lazy loading and optimized rendering.",
+      "Integrated REST APIs with clean state management architecture.",
+      "Ensured pixel-perfect responsive UI across mobile and desktop.",
+    ],
+    tech: ["React", "Tailwind CSS", "JavaScript", "REST APIs", "Git"],
+  },
+  {
+    role: "Frontend Developer Intern",
     company: "Small Fare",
     duration: "Jul 2025 – Sep 2025",
+    current: false,
     highlights: [
-      "Built responsive and reusable UI components using React and Tailwind CSS.",
+      "Built reusable UI components using React and Tailwind CSS.",
       "Worked on a SaaS product with real users and production constraints.",
       "Collaborated with designers and backend engineers to ship features.",
-      "Improved UI performance and consistency across devices.",
+      "Improved UI consistency and cross-device responsiveness.",
     ],
     tech: ["React", "Tailwind CSS", "SaaS", "Git"],
   },
   {
     role: "Freelance Web Developer",
-    company: "Self-Employed",  
-    duration: "2025 – 2025",
+    company: "Self-Employed",
+    duration: "2025",
+    current: false,
     highlights: [
       "Delivered custom websites and web apps for multiple clients.",
-      "Handled complete development lifecycle from requirement gathering to deployment.",
+      "Managed full development lifecycle from requirement gathering to deployment.",
       "Focused on clean UI, responsiveness, and performance optimization.",
       "Deployed projects using Vercel, Netlify, and Render.",
     ],
@@ -34,8 +50,6 @@ const Experience = () => {
       id="experience"
       className="relative py-28 px-6 sm:px-10 lg:px-20 bg-[#0e0e10] text-white min-h-screen overflow-hidden"
     >
-
-
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Heading */}
         <motion.h2
@@ -57,8 +71,8 @@ const Experience = () => {
           viewport={{ once: true }}
           className="text-center text-gray-400 max-w-2xl mx-auto mb-20"
         >
-          My professional journey across internships and freelance work, focused
-          on building scalable, production-ready web applications.
+          My professional journey building scalable, production-ready web
+          applications with modern frontend technologies.
         </motion.p>
 
         {/* Timeline */}
@@ -73,14 +87,29 @@ const Experience = () => {
               className="relative"
             >
               {/* Timeline Dot */}
-              <span className="absolute -left-[11px] top-2 w-5 h-5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 shadow-md" />
+              <span
+                className={`absolute -left-[11px] top-2 w-5 h-5 rounded-full shadow-md 
+                ${exp.current
+                    ? "bg-gradient-to-r from-green-400 to-emerald-500 animate-pulse"
+                    : "bg-gradient-to-r from-indigo-500 to-purple-500"
+                  }`}
+              />
 
               {/* Card */}
-              <div className="backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 shadow-lg">
+              <div className="backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-                  <h3 className="text-xl font-semibold text-blue-400">
-                    {exp.role}
-                  </h3>
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-xl font-semibold text-blue-400">
+                      {exp.role}
+                    </h3>
+
+                    {exp.current && (
+                      <span className="text-xs px-3 py-1 rounded-full bg-green-500/20 text-green-400 border border-green-500/30 animate-pulse">
+                        Present
+                      </span>
+                    )}
+                  </div>
+
                   <span className="text-sm text-pink-400 italic">
                     {exp.duration}
                   </span>
@@ -100,7 +129,7 @@ const Experience = () => {
                   {exp.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/10 text-gray-300"
+                      className="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/10 text-gray-300 hover:bg-white/20 transition"
                     >
                       {tech}
                     </span>
