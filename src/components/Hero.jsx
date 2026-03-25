@@ -13,11 +13,11 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full flex items-center justify-center pt-32 pb-20 px-5 sm:px-10 xl:px-24 overflow-hidden bg-main-bg text-white"
+      className="relative min-h-screen w-full flex items-center justify-center pt-32 pb-20 px-5 sm:px-10 xl:px-24 overflow-hidden bg-black text-white"
     >
-      {/* Decorative Grid Background (No Gradient) */}
-      <div className="absolute inset-0 z-0 opacity-[0.03]"
-        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='white' stroke-width='1'/%3E%3C/svg%3E")` }}>
+      {/* 📐 Global Monochrome Grid */}
+      <div className="absolute inset-0 z-0 opacity-[0.02]"
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 60 0 L 0 0 0 60' fill='none' stroke='white' stroke-width='0.5'/%3E%3C/svg%3E")` }}>
       </div>
 
       {/* Content */}
@@ -32,7 +32,7 @@ const Hero = () => {
           {/* Badge & Availability */}
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-6">
             <motion.span
-              className="px-4 py-1.5 rounded-full bg-card-bg border border-glass-border text-indigo-400 text-xs font-bold tracking-[0.2em] uppercase"
+              className="px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-gray-300 text-xs font-bold tracking-[0.2em] uppercase"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -41,14 +41,14 @@ const Hero = () => {
             </motion.span>
             
             <motion.div 
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-wider"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-white text-[10px] font-bold uppercase tracking-wider"
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
             >
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-40"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
               </span>
               Available for Remote & Freelance
             </motion.div>
@@ -62,7 +62,7 @@ const Hero = () => {
             transition={{ delay: 0.4 }}
           >
             I build{" "}
-            <span className="text-indigo-400">
+            <span className="text-gray-400">
               <Typewriter
                 words={[
                   "scalable web apps.",
@@ -94,7 +94,7 @@ const Hero = () => {
 
           {/* Minimal Stats */}
           <motion.div
-            className="mt-8 grid grid-cols-2 gap-4 border-l border-glass-border pl-6"
+            className="mt-8 grid grid-cols-2 gap-4 border-l-2 border-white/10 pl-6"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7 }}
@@ -111,7 +111,7 @@ const Hero = () => {
 
           {/* CTAs */}
           <motion.div
-            className="mt-8 flex flex-wrap justify-center md:justify-start gap-4"
+            className="mt-10 flex flex-wrap justify-center md:justify-start gap-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
@@ -122,7 +122,7 @@ const Hero = () => {
                   .getElementById("projects")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="bg-indigo-600 hover:bg-indigo-700 text-white px-10 py-4 rounded-xl font-bold tracking-tight transition-all duration-300 transform hover:scale-[1.02] border border-indigo-500/50 active:scale-95"
+              className="bg-white hover:bg-gray-200 text-black px-10 py-4 rounded-xl font-bold tracking-tight transition-all duration-300 transform hover:scale-[1.02] border border-white active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
             >
               View Projects
             </button>
@@ -130,7 +130,7 @@ const Hero = () => {
             <a
               href="/Resume.pdf"
               download
-              className="px-10 py-4 bg-card-bg border border-glass-border backdrop-blur-sm rounded-xl font-bold tracking-tight text-gray-200 hover:text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-[1.02] active:scale-95"
+              className="px-10 py-4 bg-white/[0.03] border border-white/10 backdrop-blur-sm rounded-xl font-bold tracking-tight text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300 transform hover:scale-[1.02] active:scale-95"
             >
               Download Resume
             </a>
@@ -152,7 +152,7 @@ const Hero = () => {
                 href={social.link}
                 target="_blank"
                 rel="noreferrer"
-                className="w-12 h-12 flex items-center justify-center rounded-xl bg-card-bg border border-glass-border text-gray-400 hover:text-white hover:border-indigo-500/50 transition-all duration-300"
+                className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 text-gray-400 hover:text-white hover:border-white/30 hover:bg-white/[0.08] transition-all duration-300 shadow-sm"
               >
                 <span className="text-2xl">{social.icon}</span>
               </a>
@@ -170,17 +170,17 @@ const Hero = () => {
           <img
             src={profileImage}
             alt="Nikil Kumar K S"
-            className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-2xl object-cover border border-glass-border shadow-2xl relative z-10"
+            className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-2xl object-cover border border-white/10 shadow-[0_0_40px_rgba(255,255,255,0.05)] relative z-10"
           />
           {/* Decorative frame for image */}
-          <div className="absolute -inset-4 border border-glass-border rounded-3xl -z-10 opacity-50"></div>
+          <div className="absolute -inset-4 border border-white/5 rounded-3xl -z-10 opacity-50"></div>
         </motion.div>
       </motion.div>
 
       {/* Scroll Down */}
       <motion.button
         onClick={scrollToNext}
-        className="absolute bottom-8 text-indigo-500 animate-bounce"
+        className="absolute bottom-8 text-gray-500 hover:text-white animate-bounce transition-colors"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.3 }}

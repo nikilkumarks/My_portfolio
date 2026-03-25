@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-main-bg: #070709;
-  --color-section-bg: #0b0b0f;
-  --color-elevated: #111118;
-  --color-card-bg: rgba(255, 255, 255, 0.04);
-  --color-glass-border: rgba(255, 255, 255, 0.06);
+  --color-main-bg: #000000;
+  --color-section-bg: #000000;
+  --color-elevated: #050505;
+  --color-card-bg: rgba(255, 255, 255, 0.02);
+  --color-glass-border: rgba(255, 255, 255, 0.05);
 }
 
 :root {
-  --main-bg: #070709;
-  --section-bg: #0b0b0f;
-  --elevated-surface: #111118;
-  --card-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.06);
+  --main-bg: #000000;
+  --section-bg: #000000;
+  --elevated-surface: #050505;
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.05);
 }
 
 body {
