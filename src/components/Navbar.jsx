@@ -80,7 +80,7 @@ const Navbar = () => {
         {/* Logo Tile */}
         <motion.button
           onClick={() => scrollToSection("home")}
-          className="w-12 h-12 flex items-center justify-center bg-white text-black rounded-xl font-black text-xl hover:bg-indigo-500 hover:text-white transition-all shadow-2xl"
+          className="w-12 h-12 flex items-center justify-center bg-white text-black rounded-xl font-black text-xl hover:bg-gray-300 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
@@ -106,9 +106,9 @@ const Navbar = () => {
         {/* Action Tile */}
         <motion.button
           onClick={() => scrollToSection("contact")}
-          className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] shadow-xl transition-all border ${activeSection === "contact"
-            ? "bg-white text-black border-white"
-            : "bg-indigo-600 hover:bg-indigo-700 text-white border-indigo-500/50"
+          className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] transition-all border ${activeSection === "contact"
+            ? "bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+            : "bg-white/[0.03] hover:bg-white text-white hover:text-black border-white/10 hover:border-white shadow-xl"
             }`}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -118,7 +118,7 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Top Bar */}
-      <div className="md:hidden fixed top-0 left-0 w-full z-[100] px-6 py-4 flex justify-between items-center text-white pointer-events-auto bg-main-bg/80 backdrop-blur-md border-b border-glass-border">
+      <div className="md:hidden fixed top-0 left-0 w-full z-[100] px-6 py-4 flex justify-between items-center text-white pointer-events-auto bg-black/80 backdrop-blur-md border-b border-white/10">
         <button
           onClick={() => scrollToSection("home")}
           className="h-10 w-10 flex items-center justify-center bg-white text-black rounded-lg font-black"
@@ -165,7 +165,7 @@ const Navbar = () => {
               ))}
               <motion.button
                 onClick={() => scrollToSection("contact")}
-                className="mt-12 px-12 py-5 bg-indigo-600 text-white rounded-2xl text-lg font-black uppercase tracking-widest shadow-2xl"
+                className="mt-12 px-12 py-5 bg-white text-black border border-white rounded-2xl text-lg font-black uppercase tracking-widest shadow-[0_0_30px_rgba(255,255,255,0.1)]"
               >
                 Let's Talk
               </motion.button>
