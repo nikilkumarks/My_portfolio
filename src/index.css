@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+@theme {
+  --color-main-bg: #070709;
+  --color-section-bg: #0b0b0f;
+  --color-elevated: #111118;
+  --color-card-bg: rgba(255, 255, 255, 0.04);
+  --color-glass-border: rgba(255, 255, 255, 0.06);
+}
+
+:root {
+  --main-bg: #070709;
+  --section-bg: #0b0b0f;
+  --elevated-surface: #111118;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.06);
+}
+
+body {
+  background-color: var(--main-bg);
+  color: #ffffff;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+section {
+  background-color: var(--section-bg);
+}

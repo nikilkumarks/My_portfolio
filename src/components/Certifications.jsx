@@ -18,9 +18,9 @@ const certifications = [
 
 const Certification = () => {
   return (
-    <section id="certification" className="py-16 px-6 bg-[#0e0e10] text-white min-h-screen">
+    <section id="certification" className="py-24 px-6 bg-section-bg text-white min-h-screen">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+        <h2 className="text-4xl sm:text-5xl font-extrabold text-center mb-16 text-white">
           Certifications
         </h2>
 
@@ -30,14 +30,16 @@ const Certification = () => {
               key={idx}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.03, boxShadow: "0 0 20px rgba(236, 72, 153, 0.4)" }}
+              whileHover={{ scale: 1.02, borderColor: "rgba(99, 102, 241, 0.4)" }}
               transition={{ duration: 0.4 }}
-              className="bg-white/5 backdrop-blur-lg rounded-2xl p-6 border border-pink-500/30 transition-all"
+              className="bg-card-bg backdrop-blur-sm rounded-2xl p-8 border border-glass-border shadow-xl transition-all"
             >
-              <h3 className="text-xl font-semibold text-blue-400">{cert.title}</h3>
-              <p className="text-purple-300">{cert.provider}</p>
-              <p className="text-sm text-pink-400 italic mb-2">{cert.date}</p>
-              <p className="text-gray-300">{cert.description}</p>
+              <h3 className="text-2xl font-bold text-indigo-400 mb-1">{cert.title}</h3>
+              <div className="flex justify-between items-center mb-4">
+                <p className="text-indigo-200/80 font-medium">{cert.provider}</p>
+                <p className="text-sm text-purple-400 font-medium italic">{cert.date}</p>
+              </div>
+              <p className="text-gray-300 leading-relaxed">{cert.description}</p>
             </motion.div>
           ))}
         </div>

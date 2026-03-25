@@ -4,7 +4,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative min-h-screen px-6 sm:px-10 lg:px-24 py-28 bg-[#0e0e10] text-white flex items-center justify-center"
+      className="relative min-h-screen px-6 sm:px-10 lg:px-24 py-28 bg-section-bg text-white flex items-center justify-center"
     >
       <div className="relative z-10 max-w-6xl w-full">
         {/* Heading */}
@@ -13,9 +13,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center text-4xl sm:text-5xl font-bold mb-4
-          bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500
-          text-transparent bg-clip-text"
+          className="text-center text-4xl sm:text-5xl font-bold mb-4 text-white"
         >
           About Me
         </motion.h2>
@@ -32,13 +30,7 @@ const About = () => {
         </motion.p>
 
         {/* Divider */}
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: "96px" }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-14 h-[3px] bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full"
-        />
+          className="mx-auto mb-14 h-[3px] bg-indigo-500 rounded-full"
 
         {/* Main Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -48,7 +40,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-10 shadow-xl"
+            className="lg:col-span-2 bg-card-bg border border-glass-border rounded-2xl p-6 sm:p-10 shadow-xl backdrop-blur-sm"
           >
             <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
               I’m a passionate{" "}
@@ -61,14 +53,14 @@ const About = () => {
 
             <p className="mt-6 text-base sm:text-lg text-gray-300 leading-relaxed">
               On the frontend, I work with{" "}
-              <span className="text-cyan-400 font-medium">React.js</span>,{" "}
-              <span className="text-cyan-400 font-medium">Tailwind CSS</span>, and
+              <span className="text-indigo-400 font-medium">React.js</span>,{" "}
+              <span className="text-indigo-400 font-medium">Tailwind CSS</span>, and
               modern component-driven design systems.
             </p>
 
             <p className="mt-6 text-base sm:text-lg text-gray-300 leading-relaxed">
               On the backend, I design RESTful APIs using{" "}
-              <span className="text-cyan-400 font-medium">
+              <span className="text-indigo-400 font-medium">
                 Node.js & Express
               </span>{" "}
               and manage authentication, data, and business logic.
@@ -92,7 +84,7 @@ const About = () => {
             className="flex flex-col gap-6"
           >
             {/* Focus */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-xl">
+            <div className="bg-card-bg border border-glass-border rounded-2xl p-6 shadow-xl backdrop-blur-sm">
               <h3 className="text-lg font-semibold mb-4 text-white">
                 Core Focus
               </h3>
@@ -106,7 +98,7 @@ const About = () => {
                 ].map((item) => (
                   <span
                     key={item}
-                    className="px-4 py-1.5 text-sm rounded-full bg-white/10 border border-white/10 text-gray-300"
+                    className="px-4 py-1.5 text-sm rounded-full bg-white/5 border border-glass-border text-gray-300"
                   >
                     {item}
                   </span>
@@ -124,7 +116,7 @@ const About = () => {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="bg-white/5 border border-white/10 rounded-xl p-4 text-center shadow-md"
+                  className="bg-card-bg border border-glass-border rounded-xl p-4 text-center shadow-md backdrop-blur-sm"
                 >
                   <p className="text-xl font-bold text-white">
                     {stat.value}

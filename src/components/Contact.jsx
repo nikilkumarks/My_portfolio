@@ -34,19 +34,16 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative min-h-screen px-6 sm:px-10 lg:px-24 py-28 bg-[#0e0e10] text-white overflow-hidden"
+      className="relative min-h-screen px-6 sm:px-10 lg:px-24 py-28 bg-section-bg text-white overflow-hidden"
     >
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center text-4xl sm:text-5xl font-extrabold mb-6
-          bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500
-          text-transparent bg-clip-text"
+          className="text-center text-4xl sm:text-5xl font-extrabold mb-6 text-white"
         >
           Let’s Connect
         </motion.h2>
@@ -70,7 +67,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl p-8 shadow-xl hover:border-indigo-400/30 transition"
+            className="backdrop-blur-sm bg-card-bg border border-glass-border rounded-2xl p-8 shadow-xl hover:border-indigo-400/30 transition"
           >
             <h3 className="text-2xl font-semibold mb-6">
               Contact Information
@@ -112,7 +109,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="relative backdrop-blur-lg bg-white/5 border border-white/10 rounded-2xl p-8 shadow-xl space-y-6 hover:border-purple-400/30 transition"
+            className="relative backdrop-blur-sm bg-card-bg border border-glass-border rounded-2xl p-8 shadow-xl space-y-6 hover:border-purple-400/30 transition"
           >
             {["Name", "Email"].map((label, i) => (
               <div key={i}>
@@ -124,8 +121,8 @@ const Contact = () => {
                   name={label === "Email" ? "user_email" : "user_name"}
                   required
                   placeholder={`Your ${label.toLowerCase()}`}
-                  className="w-full px-4 py-2.5 rounded-md bg-[#1a1a1a]
-                  border border-white/10 text-white placeholder-gray-500
+                  className="w-full px-4 py-2.5 rounded-xl bg-main-bg
+                  border border-glass-border text-white placeholder-gray-500
                   focus:ring-2 focus:ring-indigo-500 outline-none transition"
                 />
               </div>
@@ -140,8 +137,8 @@ const Contact = () => {
                 rows="4"
                 required
                 placeholder="Tell me about your idea or opportunity..."
-                className="w-full px-4 py-2.5 rounded-md bg-[#1a1a1a]
-                border border-white/10 text-white placeholder-gray-500
+                className="w-full px-4 py-2.5 rounded-xl bg-main-bg
+                border border-glass-border text-white placeholder-gray-500
                 focus:ring-2 focus:ring-indigo-500 outline-none transition"
               />
             </div>
@@ -149,10 +146,10 @@ const Contact = () => {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-md font-semibold
-              bg-gradient-to-r from-indigo-600 via-purple-600 to-purple-600
-              hover:opacity-90 active:scale-[0.98]
-              transition shadow-md disabled:opacity-60"
+              className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold
+              bg-indigo-600 hover:bg-indigo-700 text-white border border-indigo-500/50
+              active:scale-[0.98]
+              transition duration-300 disabled:opacity-60"
             >
               {status === "sending" ? (
                 <>
@@ -198,7 +195,7 @@ const Contact = () => {
       </div>
 
       {/* Copyright */}
-      <footer className="mt-32 pt-8 border-t border-white/10 text-center text-sm text-gray-400">
+      <footer className="mt-32 pt-8 border-t border-glass-border text-center text-sm text-gray-400">
         <p>
           © {new Date().getFullYear()}{" "}
           <span className="text-white font-medium">

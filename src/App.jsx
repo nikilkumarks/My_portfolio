@@ -11,7 +11,7 @@ const App = () => {
     <div className="scroll-smooth font-sans">
       <Navbar />
       <Hero />
-      <About />
+      {/* <About /> */}
       <Skills />
       <Projects />
       <Experience />

@@ -84,17 +84,14 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen px-6 sm:px-10 lg:px-20 py-28 bg-[#0e0e10] text-white"
+      className="min-h-screen px-6 sm:px-10 lg:px-20 py-28 bg-section-bg text-white"
     >
-      {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-center text-4xl sm:text-5xl font-extrabold mb-6
-        bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500
-        text-transparent bg-clip-text"
+        className="text-center text-4xl sm:text-5xl font-extrabold mb-6 text-white"
       >
         Projects
       </motion.h2>
@@ -122,7 +119,7 @@ const Projects = () => {
             variants={cardVariants}
             whileHover={{ y: -8, scale: 1.03 }}
             transition={{ type: "spring", stiffness: 220, damping: 20 }}
-            className={`bg-white/5 border border-white/10 rounded-2xl p-6 shadow-md hover:border-white/30 transition ${
+            className={`bg-card-bg border border-glass-border rounded-2xl p-8 shadow-xl hover:border-indigo-500/40 transition duration-500 backdrop-blur-sm ${
               project.featured ? "lg:col-span-2" : ""
             }`}
           >
@@ -146,20 +143,19 @@ const Projects = () => {
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/10 text-gray-300"
+                  className="text-xs px-3 py-1 rounded-full bg-main-bg border border-glass-border text-gray-300"
                 >
                   {tech}
                 </span>
               ))}
             </div>
 
-            {/* Actions */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 mt-auto">
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm px-4 py-2 rounded-lg border border-white/10 hover:bg-white/10 transition"
+                className="text-sm px-5 py-2.5 rounded-full border border-glass-border bg-main-bg hover:bg-white/10 transition duration-300"
               >
                 GitHub
               </a>
@@ -169,7 +165,7 @@ const Projects = () => {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition"
+                  className="text-sm px-5 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white border border-indigo-500/50 transition duration-300"
                 >
                   Live Demo
                 </a>
