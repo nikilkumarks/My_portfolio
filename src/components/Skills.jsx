@@ -42,7 +42,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="relative py-40 bg-black text-white"
+      className="relative py-24 sm:py-40 bg-black text-white"
     >
       {/* 📐 Global Monochrome Grid */}
       <div className="fixed inset-0 z-0 opacity-[0.01] pointer-events-none"
@@ -50,7 +50,7 @@ const Skills = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-24 relative z-10">
-        <div className="flex flex-col gap-2 mb-32">
+        <div className="flex flex-col gap-2 mb-20 sm:mb-32">
           <motion.span 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -63,49 +63,49 @@ const Skills = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-6xl sm:text-9xl font-black text-white"
+            className="text-5xl sm:text-7xl lg:text-9xl font-black text-white"
           >
             Expertise<span className="text-white/20">.</span>
           </motion.h2>
         </div>
 
         {/* 📐 Blueprint Stacking Cards */}
-        <div className="flex flex-col gap-32 sm:gap-64">
+        <div className="flex flex-col gap-24 sm:gap-40 lg:gap-64">
           {skillCategories.map((category, catIndex) => (
             <motion.div
               key={category.label}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="sticky top-40 group cursor-default"
+              viewport={{ once: true, margin: "-50px" }}
+              className="sticky top-20 sm:top-40 group cursor-default"
             >
               <motion.div 
-                whileHover={{ y: -20, scale: 1.01, rotateX: 2, rotateY: -1 }}
+                whileHover={{ y: -10, scale: 1.01, rotateX: 2, rotateY: -1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="bg-[#080808] border border-white/5 group-hover:border-white/30 rounded-[3rem] p-12 sm:p-24 shadow-[0_50px_100px_rgba(0,0,0,0.95)] group-hover:shadow-[0_0_80px_rgba(255,255,255,0.04)] relative overflow-hidden transition-all duration-500 perspective-1000"
+                className="bg-[#080808] border border-white/5 group-hover:border-white/30 rounded-3xl sm:rounded-[3rem] p-8 sm:p-16 lg:p-24 shadow-[0_30px_60px_rgba(0,0,0,0.9)] sm:shadow-[0_50px_100px_rgba(0,0,0,0.95)] group-hover:shadow-[0_0_80px_rgba(255,255,255,0.04)] relative overflow-hidden transition-all duration-500 perspective-1000"
               >
                 {/* 🔢 Dynamic Backdrop Index */}
                 <motion.div 
                   initial={{ opacity: 0.03 }}
                   whileHover={{ opacity: 0.1, x: 15, y: -15 }}
-                  className="absolute right-0 top-0 mt-8 mr-12 pointer-events-none transition-all duration-700"
+                  className="absolute right-0 top-0 mt-4 mr-6 sm:mt-8 sm:mr-12 pointer-events-none transition-all duration-700"
                 >
-                  <span className="text-[20rem] font-black text-white select-none leading-none opacity-[0.03] group-hover:opacity-[0.1]">{category.index}</span>
+                  <span className="text-[8rem] sm:text-[14rem] lg:text-[20rem] font-black text-white select-none leading-none opacity-[0.03] group-hover:opacity-[0.1]">{category.index}</span>
                 </motion.div>
 
-                <div className="relative z-10 flex flex-col gap-16">
-                  <h3 className="text-4xl sm:text-7xl font-black text-white uppercase tracking-tighter group-hover:tracking-normal transition-all duration-700">
+                <div className="relative z-10 flex flex-col gap-8 sm:gap-16">
+                  <h3 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter group-hover:tracking-normal transition-all duration-700">
                     {category.label}
                   </h3>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-16">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 sm:gap-y-12 gap-x-8 sm:gap-x-16">
                     {category.skills.map((skill) => (
                       <div
                         key={skill}
-                        className="group/item flex flex-col gap-4 border-l-2 border-white/5 pl-10 hover:border-white/40 transition-all duration-500"
+                        className="group/item flex flex-col gap-4 border-l-2 border-white/5 pl-6 sm:pl-10 hover:border-white/40 transition-all duration-500"
                       >
-                         <span className="text-xl sm:text-3xl font-bold uppercase tracking-tight text-gray-500 group-hover/item:text-white transition-colors">
+                         <span className="text-lg sm:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-gray-500 group-hover/item:text-white transition-colors">
                            {skill}
                          </span>
                       </div>
