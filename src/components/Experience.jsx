@@ -40,7 +40,7 @@ const experiences = [
       "Focused on clean UI, responsiveness, and performance optimization.",
       "Deployed projects using Vercel, Netlify, and Render.",
     ],
-    tech: ["React", "JavaScript", "Tailwind", "Deployment"],
+    tech: ["React", "JavaScript", "Tailwind", "Deployments"],
   },
 ];
 
@@ -48,21 +48,18 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="relative min-h-screen py-32 bg-black text-white"
+      className="relative min-h-screen py-24 sm:py-32 bg-black text-white"
     >
-      {/* Subtle Background Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-white/[0.02] rounded-full blur-[120px] pointer-events-none" />
+      <div className="max-w-[85rem] mx-auto px-4 sm:px-10 lg:px-24 relative z-10 flex flex-col items-center">
 
-      <div className="max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-24 relative z-10 flex flex-col items-center">
-        
-        {/* Section Header */}
-        <div className="w-full flex flex-col gap-4 border-b border-white/10 pb-12 mb-16">
+        {/* Header */}
+        <div className="flex flex-col gap-4 text-center items-center justify-center mb-16 sm:mb-24">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-5xl sm:text-7xl lg:text-[8rem] font-black text-white tracking-tighter"
+            className="text-5xl sm:text-7xl lg:text-[10rem] font-black text-white tracking-tighter uppercase leading-none"
           >
             Experience<span className="text-white/20">.</span>
           </motion.h2>
@@ -71,64 +68,85 @@ const Experience = () => {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
-            className="text-gray-400 text-lg sm:text-xl font-light max-w-2xl"
+            className="text-gray-400 text-sm sm:text-lg font-medium max-w-2xl px-4"
           >
-            My professional journey building scalable, production-ready web applications with modern frontend technologies.
+            Professional journey building scalable, production-ready web applications with modern technologies.
           </motion.p>
         </div>
 
-        {/* Elegant List Format (Unboxed) */}
-        <div className="w-full flex flex-col">
+        {/* Floating Connected Timeline */}
+        <div className="relative w-full max-w-4xl mx-auto flex flex-col gap-10 sm:gap-16">
+
+          {/* Continuous Gradient Line */}
+          <div className="absolute left-[18px] sm:left-[30px] top-4 bottom-0 w-[1px] bg-gradient-to-b from-white/20 via-white/10 to-transparent -z-10" />
+
           {experiences.map((exp, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              viewport={{ once: true }}
-              className="group flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-16 py-12 border-b border-white/10 hover:border-white/30 transition-colors duration-500"
+              viewport={{ once: true, margin: "-100px" }}
+              className="relative flex items-start gap-4 sm:gap-12 group"
             >
-              
-              {/* Left Column: Role & Company */}
-              <div className="flex flex-col gap-3 lg:w-1/3 pt-2">
-                <div className="flex items-center gap-4">
-                  <h3 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-                    {exp.company}
-                  </h3>
-                  {exp.current && (
-                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                  )}
-                </div>
-                
-                <h4 className="text-xl sm:text-2xl font-light text-gray-400">
-                  {exp.role}
-                </h4>
 
-                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-600 mt-2">
-                  {exp.duration}
-                </span>
+              {/* Timeline Indicator - Scaled for Mobile */}
+              <div className="relative z-10 flex-shrink-0 mt-5 sm:mt-8 ml-[-2px]">
+                <div
+                  className={`w-9 h-9 sm:w-16 sm:h-16 rounded-full flex items-center justify-center bg-black border-[2px] sm:border-[3px] transition-colors duration-500
+                    ${exp.current
+                      ? "border-white shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                      : "border-gray-800 group-hover:border-gray-600"
+                    }`}
+                >
+                  <div className={`w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-full ${exp.current ? "bg-white animate-pulse" : "bg-gray-700"}`} />
+                </div>
               </div>
 
-              {/* Right Column: Description & Tags */}
-              <div className="flex flex-col gap-8 lg:w-2/3">
-                <ul className="space-y-4">
+              {/* Seamless Floating Card - Adjusted for Mobile Size */}
+              <div className="flex-1 flex flex-col bg-[#050505] hover:bg-[#09090b] border border-white/[0.03] hover:border-white/[0.1] rounded-[1.5rem] sm:rounded-[2.5rem] p-5 sm:p-12 shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-500">
+
+                {/* Header Section */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 sm:mb-8">
+                  <div className="flex flex-col gap-1">
+                    <h3 className="text-xl sm:text-3xl font-black text-white tracking-tight">
+                      {exp.role}
+                    </h3>
+                    <h4 className="text-sm sm:text-lg font-bold text-gray-500 uppercase tracking-widest">
+                      {exp.company}
+                    </h4>
+                  </div>
+
+                  <div className="flex items-center gap-2 bg-white/[0.03] border border-white/[0.05] px-4 py-1.5 rounded-full w-fit">
+                    {exp.current && <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />}
+                    <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">
+                      {exp.duration}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Body Details */}
+                <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                   {exp.highlights.map((point, i) => (
-                    <li key={i} className="text-base sm:text-lg text-gray-300 font-light leading-relaxed">
+                    <li key={i} className="text-xs sm:text-base text-gray-500 font-normal leading-relaxed flex items-start gap-3 sm:gap-4">
+                      <span className="w-1 h-1 rounded-full bg-gray-700 mt-2 flex-shrink-0" />
                       {point}
                     </li>
                   ))}
                 </ul>
 
-                <div className="flex flex-wrap gap-2 mt-4">
+                {/* Tech Pills */}
+                <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-white/[0.03]">
                   {exp.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs font-semibold tracking-wide px-4 py-2 rounded-full bg-white/[0.03] border border-white/5 text-gray-400 group-hover:text-white transition-colors duration-300"
+                      className="text-[9px] sm:text-[11px] font-black text-gray-400 uppercase tracking-widest px-3 py-1.5 rounded-full bg-white/[0.02] border border-white/[0.05]"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
+
               </div>
 
             </motion.div>

@@ -48,7 +48,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-5xl sm:text-7xl lg:text-[8rem] font-black text-white tracking-tighter"
+            className="text-5xl sm:text-7xl lg:text-[10rem] font-black text-white tracking-tighter leading-none"
           >
             Contact<span className="text-white/20">.</span>
           </motion.h2>
@@ -79,16 +79,16 @@ const Contact = () => {
             </h3>
 
             <div className="flex flex-col gap-10">
-              <div className="flex flex-col gap-3 group">
-                <span className="text-sm font-semibold uppercase tracking-widest text-gray-500">Email</span>
-                <a href="mailto:nikilkumark.s19601@gmail.com" className="text-xl sm:text-2xl font-light text-white hover:text-gray-400 transition-colors duration-300">
+              <div className="flex flex-col gap-2 group">
+                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Email</span>
+                <a href="mailto:nikilkumark.s19601@gmail.com" className="text-lg sm:text-2xl font-light text-white hover:text-gray-400 transition-colors duration-300">
                   nikilkumark.s19601@gmail.com
                 </a>
               </div>
 
-              <div className="flex flex-col gap-3 group">
-                <span className="text-sm font-semibold uppercase tracking-widest text-gray-500">Phone</span>
-                <a href="tel:+916363719601" className="text-xl sm:text-2xl font-light text-white hover:text-gray-400 transition-colors duration-300">
+              <div className="flex flex-col gap-2 group">
+                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Phone</span>
+                <a href="tel:+916363719601" className="text-lg sm:text-2xl font-light text-white hover:text-gray-400 transition-colors duration-300">
                   +91 63637 19601
                 </a>
               </div>

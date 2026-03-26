@@ -6,11 +6,13 @@ import Contact from './components/Contact';
 import Navbar from './components/Navbar';
 import Experience from './components/Experience';
 import Certifications from './components/Certifications';
+import Contributions from './components/Contributions';
 const App = () => {
   return (
     <div className="scroll-smooth font-sans">
       <Navbar />
       <Hero />
+      <Contributions />
       {/* <About /> */}
       <Skills />
       <Projects />

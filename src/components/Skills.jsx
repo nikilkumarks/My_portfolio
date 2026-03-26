@@ -63,7 +63,7 @@ const Skills = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-5xl sm:text-7xl lg:text-9xl font-black text-white"
+            className="text-5xl sm:text-7xl lg:text-9xl font-black text-white leading-none tracking-tighter"
           >
             Expertise<span className="text-white/20">.</span>
           </motion.h2>
@@ -78,12 +78,12 @@ const Skills = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true, margin: "-50px" }}
-              className="sticky top-20 sm:top-40 group cursor-default"
+              className="sticky top-12 sm:top-24 lg:top-40 group cursor-default"
             >
               <motion.div 
                 whileHover={{ y: -10, scale: 1.01, rotateX: 2, rotateY: -1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="bg-[#080808] border border-white/5 group-hover:border-white/30 rounded-3xl sm:rounded-[3rem] p-8 sm:p-16 lg:p-24 shadow-[0_30px_60px_rgba(0,0,0,0.9)] sm:shadow-[0_50px_100px_rgba(0,0,0,0.95)] group-hover:shadow-[0_0_80px_rgba(255,255,255,0.04)] relative overflow-hidden transition-all duration-500 perspective-1000"
+                className="bg-[#080808] border border-white/5 group-hover:border-white/30 rounded-3xl sm:rounded-[3rem] p-6 sm:p-12 lg:p-24 shadow-[0_30px_60px_rgba(0,0,0,0.9)] sm:shadow-[0_50px_100px_rgba(0,0,0,0.95)] group-hover:shadow-[0_0_80px_rgba(255,255,255,0.04)] relative overflow-hidden transition-all duration-500 perspective-1000"
               >
                 {/* 🔢 Dynamic Backdrop Index */}
                 <motion.div 
@@ -103,9 +103,9 @@ const Skills = () => {
                     {category.skills.map((skill) => (
                       <div
                         key={skill}
-                        className="group/item flex flex-col gap-4 border-l-2 border-white/5 pl-6 sm:pl-10 hover:border-white/40 transition-all duration-500"
+                        className="group/item flex flex-col gap-4 border-l-2 border-white/5 pl-4 sm:pl-10 hover:border-white/40 transition-all duration-500"
                       >
-                         <span className="text-lg sm:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-gray-500 group-hover/item:text-white transition-colors">
+                         <span className="text-base sm:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-gray-500 group-hover/item:text-white transition-colors">
                            {skill}
                          </span>
                       </div>
