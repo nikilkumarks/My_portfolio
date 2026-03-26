@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    role: "Frontend Developer Intern",
+    role: "Frontend Developer",
     company: "Innovgeist",
     duration: "Jan 2026 – Present",
     current: true,
@@ -17,7 +17,7 @@ const experiences = [
     tech: ["React", "Tailwind CSS", "JavaScript", "REST APIs", "Git"],
   },
   {
-    role: "Frontend Developer Intern",
+    role: "Frontend Intern",
     company: "Small Fare",
     duration: "Jul 2025 – Sep 2025",
     current: false,
@@ -30,7 +30,7 @@ const experiences = [
     tech: ["React", "Tailwind CSS", "SaaS", "Git"],
   },
   {
-    role: "Freelance Web Developer",
+    role: "Freelance Developer",
     company: "Self-Employed",
     duration: "2025",
     current: false,
@@ -48,32 +48,37 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="relative py-28 px-6 sm:px-10 lg:px-20 bg-section-bg text-white min-h-screen overflow-hidden"
+      className="relative min-h-screen py-32 bg-black text-white"
     >
-      <div className="relative z-10 max-w-5xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center text-4xl sm:text-5xl font-extrabold mb-6 text-white"
-        >
-          Experience
-        </motion.h2>
+      {/* Subtle Background Glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-white/[0.02] rounded-full blur-[120px] pointer-events-none" />
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          viewport={{ once: true }}
-          className="text-center text-gray-400 max-w-2xl mx-auto mb-20"
-        >
-          My professional journey building scalable, production-ready web
-          applications with modern frontend technologies.
-        </motion.p>
+      <div className="max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-24 relative z-10 flex flex-col items-center">
+        
+        {/* Section Header */}
+        <div className="w-full flex flex-col gap-4 border-b border-white/10 pb-12 mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-5xl sm:text-7xl lg:text-[8rem] font-black text-white tracking-tighter"
+          >
+            Experience<span className="text-white/20">.</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-gray-400 text-lg sm:text-xl font-light max-w-2xl"
+          >
+            My professional journey building scalable, production-ready web applications with modern frontend technologies.
+          </motion.p>
+        </div>
 
-        {/* Timeline */}
-        <div className="relative border-l border-glass-border pl-6 space-y-14">
+        {/* Elegant List Format (Unboxed) */}
+        <div className="w-full flex flex-col">
           {experiences.map((exp, idx) => (
             <motion.div
               key={idx}
@@ -81,58 +86,51 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className="relative"
+              className="group flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-16 py-12 border-b border-white/10 hover:border-white/30 transition-colors duration-500"
             >
-              {/* Timeline Dot */}
-              <span
-                className={`absolute -left-[11px] top-2 w-5 h-5 rounded-full shadow-md border-2 border-main-bg
-                ${exp.current
-                    ? "bg-emerald-500 animate-pulse"
-                    : "bg-indigo-500"
-                  }`}
-              />
-
-              {/* Card */}
-              <div className="backdrop-blur-sm bg-card-bg border border-glass-border rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-indigo-500/10 transition-all duration-300 hover:scale-[1.02]">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-xl font-semibold text-indigo-400">
-                      {exp.role}
-                    </h3>
-
-                    {exp.current && (
-                      <span className="text-xs px-3 py-1 rounded-full bg-green-500/20 text-green-400 border border-green-500/30 animate-pulse">
-                        Present
-                      </span>
-                    )}
-                  </div>
-
-                  <span className="text-sm text-purple-400 font-medium italic">
-                    {exp.duration}
-                  </span>
+              
+              {/* Left Column: Role & Company */}
+              <div className="flex flex-col gap-3 lg:w-1/3 pt-2">
+                <div className="flex items-center gap-4">
+                  <h3 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                    {exp.company}
+                  </h3>
+                  {exp.current && (
+                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                  )}
                 </div>
+                
+                <h4 className="text-xl sm:text-2xl font-light text-gray-400">
+                  {exp.role}
+                </h4>
 
-                <p className="text-indigo-200/80 mb-4">{exp.company}</p>
+                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-600 mt-2">
+                  {exp.duration}
+                </span>
+              </div>
 
-                {/* Highlights */}
-                <ul className="list-disc list-inside space-y-2 text-gray-300 text-sm sm:text-base">
+              {/* Right Column: Description & Tags */}
+              <div className="flex flex-col gap-8 lg:w-2/3">
+                <ul className="space-y-4">
                   {exp.highlights.map((point, i) => (
-                    <li key={i}>{point}</li>
+                    <li key={i} className="text-base sm:text-lg text-gray-300 font-light leading-relaxed">
+                      {point}
+                    </li>
                   ))}
                 </ul>
 
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mt-5">
+                <div className="flex flex-wrap gap-2 mt-4">
                   {exp.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs px-3 py-1 rounded-full bg-main-bg border border-glass-border text-gray-300 hover:bg-white/10 transition"
+                      className="text-xs font-semibold tracking-wide px-4 py-2 rounded-full bg-white/[0.03] border border-white/5 text-gray-400 group-hover:text-white transition-colors duration-300"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
+
             </motion.div>
           ))}
         </div>
