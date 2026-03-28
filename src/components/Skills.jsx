@@ -1,133 +1,202 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { useState, useRef } from "react";
 
 const skillCategories = [
   {
-    index: "01",
     label: "Frontend Development",
-    skills: ["React.js", "JavaScript (ES6+)", "HTML5", "CSS3", "Tailwind CSS", "DaisyUI", "Framer Motion", "Responsive Web Design"],
+    icon: "⚛️",
+    skills: ["React.js", "JavaScript (ES6+)", "HTML5", "CSS3", "Tailwind CSS", "DaisyUI", "Framer Motion", "Responsive Web Design"]
   },
   {
-    index: "02",
     label: "Backend Development",
-    skills: ["Node.js", "Express.js", "RESTful API Development", "JWT Authentication", "PHP"],
+    icon: "📁",
+    skills: ["Node.js", "Express.js", "RESTful API Development", "JWT Authentication", "PHP"]
   },
   {
-    index: "03",
     label: "AI & API Integrations",
-    skills: ["Google Gemini API Integration", "Cohere API Integration"],
+    icon: "🔌",
+    skills: ["Google Gemini PI", "Cohere API"]
   },
   {
-    index: "04",
     label: "Databases",
-    skills: ["MongoDB", "MySQL"],
+    icon: "🗄️",
+    skills: ["MongoDB", "MySQL"]
   },
   {
-    index: "05",
     label: "Programming Languages",
-    skills: ["Java", "Python", "JavaScript"],
+    icon: "💻",
+    skills: ["Java", "Python", "JavaScript"]
   },
   {
-    index: "06",
     label: "Tools & Development",
-    skills: ["Git", "GitHub", "Postman", "Vite"],
+    icon: "🛠️",
+    skills: ["Git", "GitHub", "Postman", "Vite"]
   },
   {
-    index: "07",
     label: "Deployment & DevOps",
-    skills: ["Vercel", "Netlify", "Render"],
-  },
+    icon: "☁️",
+    skills: ["Vercel", "Netlify", "Render"]
+  }
 ];
+
+const SkillCard = ({ category, idx }) => {
+  const cardRef = useRef(null);
+  
+  // 📏 Spotlight Mouse Tracking
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  // 📐 3D Perspective Tilt
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useSpring(useTransform(y, [-100, 100], [10, -10]), { stiffness: 300, damping: 30 });
+  const rotateY = useSpring(useTransform(x, [-100, 100], [-10, 10]), { stiffness: 300, damping: 30 });
+
+  function handlePerspectiveMove(e) {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseXPos = e.clientX - rect.left;
+    const mouseYPos = e.clientY - rect.top;
+    const xPct = (mouseXPos / width - 0.5) * 200;
+    const yPct = (mouseYPos / height - 0.5) * 200;
+    x.set(xPct);
+    y.set(yPct);
+  }
+
+  function handlePerspectiveLeave() {
+    x.set(0);
+    y.set(0);
+  }
+
+  return (
+    <motion.div
+      ref={cardRef}
+      onMouseMove={(e) => { handleMouseMove(e); handlePerspectiveMove(e); }}
+      onMouseLeave={handlePerspectiveLeave}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: idx * 0.05 }}
+      style={{ rotateX, rotateY, perspective: 1000 }}
+      className="group relative bg-[#0c0c0c] border border-white/5 p-8 sm:p-10 rounded-[2.5rem] transition-all duration-300 flex flex-col h-full overflow-hidden"
+    >
+       {/* 📐 Dynamic Spotlight Overlay */}
+       <motion.div
+         className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+         style={{
+           background: useTransform(
+             [mouseX, mouseY],
+             ([x, y]) => `radial-gradient(400px circle at ${x}px ${y}px, rgba(255,255,255,0.06), transparent 80%)`
+           ),
+         }}
+       />
+
+       {/* 📐 Card Content */}
+       <div className="relative z-10 flex flex-col h-full">
+          {/* Header with Icon Square */}
+          <div className="flex items-center gap-5 mb-8">
+             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-xl sm:text-2xl transition-all group-hover:scale-110 group-hover:border-white/30 group-hover:bg-white/10 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.05)] duration-500">
+                {category.icon}
+             </div>
+             <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-white transition-colors">
+               {category.label}
+             </h3>
+          </div>
+
+          {/* Skill Pill Cloud */}
+          <div className="flex flex-wrap gap-2.5">
+             {category.skills.map((skill, sIdx) => (
+               <motion.div 
+                 key={skill}
+                 whileHover={{ scale: 1.05, y: -2 }}
+                 className="px-5 py-2.5 bg-white/[0.04] border border-white/5 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#888] hover:text-white hover:bg-white/[0.08] hover:border-white/20 transition-all cursor-default shadow-sm"
+               >
+                  {skill}
+               </motion.div>
+             ))}
+          </div>
+       </div>
+    </motion.div>
+  );
+};
 
 const Skills = () => {
   return (
-    <section
-      id="skills"
-      className="relative py-24 sm:py-40 bg-black text-white"
-    >
-      {/* 📐 Global Monochrome Grid */}
-      <div className="fixed inset-0 z-0 opacity-[0.01] pointer-events-none"
-        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 60 0 L 0 0 0 60' fill='none' stroke='white' stroke-width='0.5'/%3E%3C/svg%3E")` }}>
+    <section id="skills" className="relative py-24 sm:py-32 bg-black text-white overflow-hidden">
+      
+      {/* 📐 Subtle Grid Background */}
+      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='white' stroke-width='0.5'/%3E%3C/svg%3E")` }}>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-24 relative z-10">
-        <div className="flex flex-col gap-2 mb-20 sm:mb-32">
-          <motion.span 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="text-xs uppercase tracking-[0.5em] text-gray-500 font-black"
-          >
-            Technical Ecosystem
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-5xl sm:text-7xl lg:text-9xl font-black text-white leading-none tracking-tighter"
-          >
-            Expertise<span className="text-white/20">.</span>
-          </motion.h2>
+      <div className="max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-24 relative z-10 w-full flex flex-col items-center">
+        
+        {/* 📐 Section Header */}
+        <div className="text-center mb-20 sm:mb-24 flex flex-col items-center gap-4">
+           <div className="flex items-center gap-3 mb-2">
+              <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]" />
+              <span className="text-[10px] font-mono font-black uppercase tracking-[0.6em] text-gray-500">System_Integrity: ACTIVE</span>
+           </div>
+           <motion.h2
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-none capitalize"
+           >
+             Technical Expertise
+           </motion.h2>
+           <motion.p 
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             transition={{ delay: 0.1 }}
+             className="text-gray-500 text-sm sm:text-lg max-w-2xl font-medium"
+           >
+             A high-performance toolkit for building scalable, production-ready applications.
+           </motion.p>
         </div>
 
-        {/* 📐 Blueprint Stacking Cards */}
-        <div className="flex flex-col gap-24 sm:gap-40 lg:gap-64">
-          {skillCategories.map((category, catIndex) => (
-            <motion.div
-              key={category.label}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              viewport={{ once: true, margin: "-50px" }}
-              className="sticky top-12 sm:top-24 lg:top-40 group cursor-default"
-            >
-              <motion.div 
-                whileHover={{ y: -10, scale: 1.01, rotateX: 2, rotateY: -1 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="bg-[#080808] border border-white/5 group-hover:border-white/30 rounded-3xl sm:rounded-[3rem] p-6 sm:p-12 lg:p-24 shadow-[0_30px_60px_rgba(0,0,0,0.9)] sm:shadow-[0_50px_100px_rgba(0,0,0,0.95)] group-hover:shadow-[0_0_80px_rgba(255,255,255,0.04)] relative overflow-hidden transition-all duration-500 perspective-1000"
-              >
-                {/* 🔢 Dynamic Backdrop Index */}
-                <motion.div 
-                  initial={{ opacity: 0.03 }}
-                  whileHover={{ opacity: 0.1, x: 15, y: -15 }}
-                  className="absolute right-0 top-0 mt-4 mr-6 sm:mt-8 sm:mr-12 pointer-events-none transition-all duration-700"
-                >
-                  <span className="text-[8rem] sm:text-[14rem] lg:text-[20rem] font-black text-white select-none leading-none opacity-[0.03] group-hover:opacity-[0.1]">{category.index}</span>
-                </motion.div>
-
-                <div className="relative z-10 flex flex-col gap-8 sm:gap-16">
-                  <h3 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter group-hover:tracking-normal transition-all duration-700">
-                    {category.label}
-                  </h3>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 sm:gap-y-12 gap-x-8 sm:gap-x-16">
-                    {category.skills.map((skill) => (
-                      <div
-                        key={skill}
-                        className="group/item flex flex-col gap-4 border-l-2 border-white/5 pl-4 sm:pl-10 hover:border-white/40 transition-all duration-500"
-                      >
-                         <span className="text-base sm:text-2xl lg:text-3xl font-bold uppercase tracking-tight text-gray-500 group-hover/item:text-white transition-colors">
-                           {skill}
-                         </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 📐 Decorative Inner Highlight (Shadow Effect) */}
-                <div className="absolute inset-0 border border-white/[0.03] rounded-[3rem] pointer-events-none group-hover:border-white/[0.1] transition-colors duration-700 shadow-inner" />
-
-                {/* 📐 Dynamic Bottom Scan Rail */}
-                <div className="absolute bottom-0 left-0 w-full h-2 bg-white/[0.02] group-hover:bg-white/[0.05] transition-all duration-500">
-                  <motion.div 
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                    className="w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                  />
-                </div>
-              </motion.div>
-            </motion.div>
+        {/* 📐 Advanced Interactive Card Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10 w-full">
+          {skillCategories.map((category, idx) => (
+             <SkillCard key={category.label} category={category} idx={idx} />
           ))}
+
+          {/* 📐 Dynamic Status Module (Visual Detail) */}
+          <div className="hidden lg:flex flex-col justify-center p-12 border border-dashed border-white/5 rounded-[2.5rem] opacity-20 hover:opacity-100 transition-opacity">
+             <div className="flex flex-col gap-6">
+                <span className="text-[10px] font-mono font-black uppercase tracking-widest text-gray-400">Integrated_Analytical_Stack</span>
+                <div className="flex flex-col gap-2">
+                   <div className="w-full h-[2px] bg-white/5 relative overflow-hidden">
+                      <motion.div 
+                        animate={{ x: ["-100%", "100%"] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        className="w-1/2 h-full bg-white/40"
+                      />
+                   </div>
+                   <div className="w-2/3 h-[2px] bg-white/5 rounded-full" />
+                </div>
+                <div className="flex justify-between items-center">
+                   <span className="text-[9px] font-mono text-gray-600 uppercase">Latency: 2ms</span>
+                   <span className="text-[9px] font-mono text-gray-600 uppercase">ID_0X44</span>
+                </div>
+             </div>
+          </div>
+        </div>
+
+        {/* 📐 Section Footer Metadata */}
+        <div className="mt-28 flex flex-col sm:flex-row justify-between items-center gap-10 w-full border-t border-white/5 pt-12 opacity-30 select-none pointer-events-none">
+           <span className="text-[9px] font-mono font-black tracking-[0.5em] text-gray-800 uppercase">Core_Deployment_Cluster v2.4.0</span>
+           <div className="flex gap-6">
+              <span className="text-[9px] font-mono text-gray-700 tracking-[0.2em] uppercase underline">System_Logs</span>
+              <span className="text-[9px] font-mono text-gray-700 tracking-[0.2em] uppercase">Session_Verified: {new Date().toLocaleTimeString()}</span>
+           </div>
         </div>
       </div>
     </section>

@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const navLinks = [
     { label: "Home", target: "home" },
-    // { label: "Skills", target: "skills" },
+    { label: "Skills", target: "skills" },
     { label: "Projects", target: "projects" },
     { label: "Experience", target: "experience" },
     // { label: "Contact", target: "contact" },
@@ -19,7 +19,7 @@ const Navbar = () => {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-20% 0px -70% 0px",
+      rootMargin: "-30% 0px -30% 0px", // More balanced margin for taller/shorter sections
       threshold: 0,
     };
 
@@ -38,8 +38,12 @@ const Navbar = () => {
       if (section) observer.observe(section);
     });
 
+    // Handle Contact section too if it has an ID
+    const contactSection = document.getElementById("contact");
+    if (contactSection) observer.observe(contactSection);
+
     return () => observer.disconnect();
-  }, []);
+  }, [navLinks]);
 
   /* Smooth scroll helper */
   const scrollToSection = (id) => {
@@ -48,6 +52,9 @@ const Navbar = () => {
 
     // Close menu first if open
     setMenuOpen(false);
+    
+    // Explicitly set active section for immediate feedback
+    setActiveSection(id);
 
     // Dynamic offset or direct scroll depending on section
     setTimeout(() => {
