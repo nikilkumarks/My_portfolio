@@ -1,7 +1,26 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { GitHubCalendar } from "react-github-calendar";
 
 const Contributions = () => {
+  const [blockSize, setBlockSize] = useState(12);
+  const [fontSize, setFontSize] = useState(13);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setBlockSize(8);
+        setFontSize(10);
+      } else {
+        setBlockSize(12);
+        setFontSize(13);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <section id="contributions" className="relative py-24 sm:py-40 bg-black text-white overflow-hidden">
       
@@ -35,7 +54,7 @@ const Contributions = () => {
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-5xl sm:text-7xl lg:text-[10rem] font-black text-white tracking-tighter uppercase leading-none"
+              className="text-4xl sm:text-7xl lg:text-[10rem] font-black text-white tracking-tighter uppercase leading-none"
             >
               Contributions<span className="text-white/20">.</span>
             </motion.h2>
@@ -62,33 +81,45 @@ const Contributions = () => {
           </div>
 
           {/* GitHub Calendar Container - Scrollbar Hidden, Full Width on Mobile */}
-          <div className="w-full max-w-5xl flex justify-center no-scrollbar overflow-x-auto min-h-[180px] bg-black/40 px-2">
-            <div className="min-w-[800px] pointer-events-none sm:pointer-events-auto">
-              <GitHubCalendar 
-                username="nikilkumarks" 
-                colorScheme="dark"
-                year={2026}
-                blockSize={12}
-                blockMargin={5}
-                fontSize={13}
-                color="#2ea043"
-                hideColorLegend
-                hideTotalCount
-              />
+          <div className="w-full max-w-5xl flex flex-col items-center">
+            <div className="w-full flex justify-start sm:justify-center no-scrollbar overflow-x-auto min-h-[160px] bg-black/40 px-4 py-8 rounded-2xl border border-white/5 relative group">
+              {/* Fade masks for mobile scroll hint */}
+              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none sm:hidden" />
+              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none sm:hidden" />
+              
+              <div className="min-w-fit px-4">
+                <GitHubCalendar 
+                  username="nikilkumarks" 
+                  colorScheme="dark"
+                  year={2026}
+                  blockSize={blockSize}
+                  blockMargin={5}
+                  fontSize={fontSize}
+                  color="#2ea043"
+                  hideColorLegend
+                  hideTotalCount
+                />
+              </div>
+            </div>
+            
+            {/* Mobile Scroll Hint */}
+            <div className="mt-4 flex items-center gap-2 sm:hidden animate-pulse opacity-40">
+              <span className="text-[8px] font-bold tracking-widest uppercase text-gray-400">Swipe to explore timeline</span>
+              <div className="w-4 h-[1px] bg-white/20" />
             </div>
           </div>
 
           {/* Micro Footer Legend Alternative */}
           <div className="mt-12 sm:mt-16 flex items-center justify-center gap-6 w-full opacity-60">
              <div className="flex-grow h-[1px] bg-white/[0.05] max-w-[100px] hidden sm:block" />
-             <a 
-               href="https://github.com/nikilkumarks" 
-               target="_blank" 
-               rel="noreferrer"
-               className="text-[9px] sm:text-[10px] font-black tracking-[0.5em] uppercase text-white hover:text-gray-400 transition-colors whitespace-nowrap"
-             >
-               Explore GitHub Profile →
-             </a>
+              <a 
+                href="https://github.com/nikilkumarks" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-[10px] sm:text-[12px] font-black tracking-[0.3em] uppercase text-white hover:text-green-400 transition-all whitespace-nowrap border-b border-white/10 pb-1"
+              >
+                Explore GitHub Profile →
+              </a>
              <div className="flex-grow h-[1px] bg-white/[0.05] max-w-[100px] hidden sm:block" />
           </div>
         </motion.div>
