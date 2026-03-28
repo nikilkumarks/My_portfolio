@@ -5,6 +5,7 @@ import { GitHubCalendar } from "react-github-calendar";
 const Contributions = () => {
   const [blockSize, setBlockSize] = useState(12);
   const [fontSize, setFontSize] = useState(13);
+  const [hoveredActivity, setHoveredActivity] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -74,15 +75,27 @@ const Contributions = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="relative w-full flex flex-col items-center"
         >
-          {/* Status Node Tooltip */}
-          <div className="flex items-center gap-3 mb-10 sm:mb-16">
-            <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]" />
-            <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.4em] uppercase text-gray-600">Sync status: Live_activity</span>
+          {/* Status Node Tooltip & Data Readout */}
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-12 mb-10 sm:mb-16">
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]" />
+              <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.4em] uppercase text-gray-600">Sync status: Live_activity</span>
+            </div>
+            
+            {/* Dynamic Data Readout */}
+            <div className={`flex items-center gap-3 transition-opacity duration-300 ${hoveredActivity ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="w-8 h-[1px] bg-white/20" />
+              <span className="text-[10px] font-mono font-bold text-green-400 tracking-wider">
+                {hoveredActivity 
+                  ? `${hoveredActivity.count} commits on ${hoveredActivity.date}` 
+                  : "Scanning node..."}
+              </span>
+            </div>
           </div>
 
           {/* GitHub Calendar Container - Scrollbar Hidden, Full Width on Mobile */}
           <div className="w-full max-w-5xl flex flex-col items-center">
-            <div className="w-full flex justify-start sm:justify-center no-scrollbar overflow-x-auto min-h-[160px] bg-black/40 px-4 py-8 rounded-2xl border border-white/5 relative group">
+            <div className="w-full flex justify-start sm:justify-center no-scrollbar overflow-x-auto min-h-[160px] bg-black/40 px-4 py-8 rounded-2xl border border-white/5 relative group shadow-[0_0_60px_-15px_rgba(34,197,94,0.2)] hover:shadow-[0_0_80px_-10px_rgba(34,197,94,0.3)] transition-shadow duration-500">
               {/* Fade masks for mobile scroll hint */}
               <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none sm:hidden" />
               <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none sm:hidden" />
@@ -98,6 +111,16 @@ const Contributions = () => {
                   color="#2ea043"
                   hideColorLegend
                   hideTotalCount
+                  renderBlock={(block, activity) => (
+                    <motion.g
+                      onMouseEnter={() => setHoveredActivity(activity)}
+                      onMouseLeave={() => setHoveredActivity(null)}
+                      whileHover={{ scale: 1.5, zIndex: 100 }}
+                      className="cursor-crosshair origin-center"
+                    >
+                      {block}
+                    </motion.g>
+                  )}
                 />
               </div>
             </div>
