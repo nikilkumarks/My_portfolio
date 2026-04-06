@@ -167,27 +167,6 @@ const Skills = () => {
           {skillCategories.map((category, idx) => (
              <SkillCard key={category.label} category={category} idx={idx} />
           ))}
-
-          {/* 📐 Dynamic Status Module (Visual Detail) */}
-          <div className="hidden lg:flex flex-col justify-center p-12 border border-dashed border-white/5 rounded-[2.5rem] opacity-20 hover:opacity-100 transition-opacity">
-             <div className="flex flex-col gap-6">
-                <span className="text-[10px] font-mono font-black uppercase tracking-widest text-gray-400">Integrated_Analytical_Stack</span>
-                <div className="flex flex-col gap-2">
-                   <div className="w-full h-[2px] bg-white/5 relative overflow-hidden">
-                      <motion.div 
-                        animate={{ x: ["-100%", "100%"] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        className="w-1/2 h-full bg-white/40"
-                      />
-                   </div>
-                   <div className="w-2/3 h-[2px] bg-white/5 rounded-full" />
-                </div>
-                <div className="flex justify-between items-center">
-                   <span className="text-[9px] font-mono text-gray-600 uppercase">Latency: 2ms</span>
-                   <span className="text-[9px] font-mono text-gray-600 uppercase">ID_0X44</span>
-                </div>
-             </div>
-          </div>
         </div>
 
         {/* 📐 Section Footer Metadata */}

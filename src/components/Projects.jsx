@@ -2,6 +2,15 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
+    title: "PromptVision Studio - AI Thumbnail Generator",
+    type: "Full-Stack AI",
+    description: "Built an AI tool to generate YouTube thumbnails from prompts using Cohere and Hugging Face. Implemented JWT + Google authentication and secure user sessions. Designed history system to manage generated images with CRUD operations.",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Cohere", "Hugging Face","Google OAuth"],
+    github: "https://github.com/nikilkumarks/Thumbnail_generator",
+    live: "https://youtube-thumbnail-ai-backend-xsbq.onrender.com/",
+    image: "/home.png", // 👉 Add your image path here (e.g., "/images/thumbnail-generator.png")
+  },
+  {
     title: "Pokémon Explorer",
     type: "Frontend",
     description: "A sleek React application to search and explore Pokémon using PokéAPI. Optimized for performance and fluid UI interactions.",
