@@ -1,125 +1,102 @@
-📌 My Portfolio — Personal Website
+# nikil-dev-portfolio
 
-Welcome to the source code for my personal portfolio website — a modern, responsive developer portfolio built with React and Vite, hosted live at nikilkumar.netlify.app.
+A modern personal portfolio built with React and Vite. It showcases my work, skills, projects, experience, contributions, and contact details in a clean, responsive layout.
 
-This site showcases my work, skills, projects, and contact information — designed to leave a great first impression with employers, recruiters, and collaborators.
+## Live Demo
 
-🚀 Live Demo
+- Portfolio: https://nikilkumarks.netlify.app/
 
-🔗 https://nikilkumar.netlify.app/
- — View the portfolio live!
+## Features
 
-🧠 Overview
+- Responsive design for desktop and mobile
+- Animated hero section with smooth transitions
+- GitHub contributions calendar
+- Skills section with interactive cards
+- Projects section with live links and GitHub repos
+- Experience timeline
+- Contact form with email delivery
+- Minimal black-and-white visual style
 
-This repository contains my personal portfolio website built using:
+## Tech Stack
 
-React — for UI components
+- React
+- Vite
+- Tailwind CSS
+- Framer Motion
+- EmailJS
+- lucide-react
+- react-github-calendar
 
-Vite — fast frontend tooling
+## Project Structure
 
-Tailwind CSS — utility-first styling
-
-Framer Motion — smooth page and UI animations
-
-The site is fully responsive, visually engaging, and organized into clear sections such as Hero, About, Skills, Projects, and Contact.
-
-✨ Features
-
-Fully responsive layout for desktop and mobile
-
-Animated Hero section with typewriter and smooth motion
-
-Clean About and Skills sections
-
-Projects grid with hover interactions
-
-Smooth scroll navigation
-
-Professional, recruiter-ready UI
-
-Easily extensible for new content
-
-🛠️ Built With
-Category	Technologies
-UI Library	React
-Bundler	Vite
-Styling	Tailwind CSS
-Animation	Framer Motion
-Deployment	Netlify
-📁 Folder Structure
-
+```text
 My_portfolio/
-
-├─ public/                # Static assets
-
-├─ src/                   # Source code
-
-│   ├─ assets/            # Images & media
-
-│   ├─ components/        # UI components
-
-│   ├─ pages/             # Page sections (Hero, About, Projects, etc.)
-
-│   ├─ App.jsx            # Main App component
-
-│   └─ main.jsx           # App bootstrap
-
-├─ .gitignore
-
+├─ public/
+├─ src/
+│  ├─ assets/
+│  ├─ components/
+│  ├─ App.jsx
+│  ├─ index.css
+│  └─ main.jsx
 ├─ package.json
-
-├─ README.md             
-
+├─ README.md
 └─ vite.config.js
+```
 
-⚙️ Getting Started
+## Getting Started
 
-To run the project locally:
+### 1. Clone the repository
 
-Clone the repo
-
+```bash
 git clone https://github.com/nikilkumarks/My_portfolio.git
-
-
-Install dependencies
-
 cd My_portfolio
+```
+
+### 2. Install dependencies
+
+```bash
 npm install
+```
 
+### 3. Start the development server
 
-Start the dev server
-
+```bash
 npm run dev
+```
 
+### 4. Build for production
 
-Open in your browser at http://localhost:5173
+```bash
+npm run build
+```
 
-💼 Projects Included
+### 5. Preview the production build
 
-This portfolio highlights several of my key projects, such as:
+```bash
+npm run preview
+```
 
-Pokémon Explorer – React + PokéAPI frontend
+## Available Scripts
 
-Car Showcase Platform – Responsive UI with animations
+- `npm run dev` - start the Vite dev server
+- `npm run build` - create a production build
+- `npm run preview` - preview the production build locally
 
-Namma Suraksha – Full-stack hackathon project
+## Sections Included
 
-STEM – Real-time chat app (React + Node + MongoDB)
+- Hero
+- Contributions
+- Skills
+- Projects
+- Experience
+- Contact
 
-…and others (E-Commerce, Music Streaming UI)
+## Contact
 
-Each project includes a description, tech stack, GitHub link, and live demo (if available).
+- GitHub: https://github.com/nikilkumarks
+- LinkedIn: https://www.linkedin.com/in/nikil-kumar-k-s-90434a2b1/
+- Email: nikilkumark.s19601@gmail.com
 
-📫 Contact Me
+## Notes
 
-I’m always open to collaborations or opportunities:
-
-Website: https://nikilkumar.netlify.app/
-
-GitHub: https://github.com/nikilkumarks
-
-LinkedIn: https://www.linkedin.com/in/nikil-kumar-k-s-90434a2b1/
-
-⭐ Feedback & Contributions
-
-Although this is my personal portfolio, feedback is always welcome! You can open an issue or suggest improvements via pull requests.
+This repository is my personal portfolio site and will continue to evolve as I add more projects and experience.
