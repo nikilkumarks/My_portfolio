@@ -48,12 +48,12 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="relative min-h-screen py-24 sm:py-32 bg-black text-white"
+      className="relative min-h-screen py-14 sm:py-20 bg-black text-white"
     >
       <div className="max-w-[85rem] mx-auto px-4 sm:px-10 lg:px-24 relative z-10 flex flex-col items-center">
 
         {/* Header */}
-        <div className="flex flex-col gap-4 text-center items-center justify-center mb-16 sm:mb-24">
+        <div className="flex flex-col gap-4 text-center items-center justify-center mb-10 sm:mb-16">
           <motion.h2
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}

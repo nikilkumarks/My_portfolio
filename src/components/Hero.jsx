@@ -13,7 +13,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full flex items-center justify-center pt-32 pb-20 px-5 sm:px-10 xl:px-24 overflow-hidden bg-black text-white"
+      className="relative min-h-screen w-full flex items-center justify-center pt-32 pb-12 px-5 sm:px-10 xl:px-24 overflow-hidden bg-black text-white"
     >
       {/* 📐 Global Monochrome Grid */}
       <div className="absolute inset-0 z-0 opacity-[0.02]"

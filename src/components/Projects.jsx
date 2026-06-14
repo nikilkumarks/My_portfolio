@@ -50,7 +50,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="relative pb-32 pt-20 bg-black text-white overflow-hidden">
+    <section id="projects" className="relative pb-8 sm:pb-12 pt-0 bg-black text-white overflow-hidden">
 
       {/* Background Ambient Lighting */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[500px] bg-white/[0.02] rounded-full blur-[200px] pointer-events-none" />
@@ -58,7 +58,7 @@ const Projects = () => {
       <div className="max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-24 relative z-10 flex flex-col">
 
         {/* Header */}
-        <div className="w-full flex flex-col items-center text-center gap-6 pb-24">
+        <div className="w-full flex flex-col items-center text-center gap-4 sm:gap-6 pb-3 sm:pb-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ const Projects = () => {
         </div>
 
         {/* Alternating Z-Pattern Layout */}
-        <div className="flex flex-col gap-20 sm:gap-32 lg:gap-48">
+        <div className="flex flex-col gap-12 sm:gap-16 lg:gap-24">
           {projects.map((project, index) => {
             // Alternate orientation based on even/odd index
             const isEven = index % 2 === 0;

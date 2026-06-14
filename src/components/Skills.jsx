@@ -130,7 +130,7 @@ const SkillCard = ({ category, idx }) => {
 
 const Skills = () => {
   return (
-    <section id="skills" className="relative py-24 sm:py-32 bg-black text-white overflow-hidden">
+    <section id="skills" className="relative py-10 sm:py-14 bg-black text-white overflow-hidden">
       
       {/* 📐 Subtle Grid Background */}
       <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
@@ -140,11 +140,7 @@ const Skills = () => {
       <div className="max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-24 relative z-10 w-full flex flex-col items-center">
         
         {/* 📐 Section Header */}
-        <div className="text-center mb-20 sm:mb-24 flex flex-col items-center gap-4">
-           <div className="flex items-center gap-3 mb-2">
-              <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]" />
-              <span className="text-[10px] font-mono font-black uppercase tracking-[0.6em] text-gray-500">System_Integrity: ACTIVE</span>
-           </div>
+        <div className="text-center mb-8 sm:mb-12 flex flex-col items-center gap-4">
            <motion.h2
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
@@ -170,7 +166,7 @@ const Skills = () => {
         </div>
 
         {/* 📐 Section Footer Metadata */}
-        <div className="mt-28 flex flex-col sm:flex-row justify-between items-center gap-10 w-full border-t border-white/5 pt-12 opacity-30 select-none pointer-events-none">
+        <div className="mt-4 sm:mt-8 flex flex-col sm:flex-row justify-between items-center gap-6 w-full border-t border-white/5 pt-3 opacity-30 select-none pointer-events-none">
            <span className="text-[9px] font-mono font-black tracking-[0.5em] text-gray-800 uppercase">Core_Deployment_Cluster v2.4.0</span>
            <div className="flex gap-6">
               <span className="text-[9px] font-mono text-gray-700 tracking-[0.2em] uppercase underline">System_Logs</span>

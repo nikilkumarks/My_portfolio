@@ -34,15 +34,15 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative min-h-screen py-32 bg-black text-white flex flex-col justify-between overflow-hidden"
+      className="relative pt-4 pb-0 sm:pt-8 sm:pb-0 bg-black text-white flex flex-col gap-6 overflow-hidden"
     >
       {/* Subtle Ambient Glow */}
       <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-white/[0.03] rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-24 flex-grow w-full relative z-10 flex flex-col">
+      <div className="max-w-[90rem] mx-auto px-6 sm:px-10 lg:px-24 w-full relative z-10 flex flex-col">
         
         {/* Modern Minimalist Header */}
-        <div className="w-full flex flex-col gap-6 border-b border-white/10 pb-12 mb-16">
+        <div className="w-full flex flex-col gap-4 border-b border-white/10 pb-6 mb-8 sm:mb-10">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -64,7 +64,7 @@ const Contact = () => {
         </div>
 
         {/* Unboxed Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 w-full mt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 w-full mt-4 sm:mt-6">
           
           {/* Left: Contact Info (Seamless) */}
           <motion.div
@@ -195,7 +195,7 @@ const Contact = () => {
       </div>
 
       {/* Elegant Minimal Footer */}
-      <footer className="mt-40 border-t border-white/10 relative z-10 w-full pt-10 pb-8 flex flex-col items-center justify-center gap-3 bg-black">
+      <footer className="relative z-10 w-full pt-0 pb-0 flex flex-col items-center justify-center gap-0 bg-black">
         <p className="text-sm font-light text-gray-400">
           © {new Date().getFullYear()} Nikil Kumar K S
         </p>
@@ -203,6 +203,7 @@ const Contact = () => {
           Built with React & Tailwind CSS
         </p>
       </footer>
+
     </section>
   );
 };
