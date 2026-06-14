@@ -30,7 +30,7 @@ A modern personal portfolio built with React and Vite. It showcases my work, ski
 ## Project Structure
 
 ```text
-My_portfolio/
+nikil-dev-portfolio/
 ├─ public/
 ├─ src/
 │  ├─ assets/
@@ -48,8 +48,8 @@ My_portfolio/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/nikilkumarks/My_portfolio.git
-cd My_portfolio
+git clone https://github.com/nikilkumarks/nikil-dev-portfolio.git
+cd nikil-dev-portfolio
 ```
 
 ### 2. Install dependencies
