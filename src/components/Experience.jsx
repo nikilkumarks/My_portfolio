@@ -3,44 +3,45 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    role: "Frontend Developer",
+    role: "Full Stack Developer",
     company: "Innovgeist",
-    duration: "Jan 2026 – Present",
-    current: true,
-    highlights: [
-      "Leading frontend development for scalable SaaS applications.",
-      "Built dynamic multi-step payment and dashboard flows using React.",
-      "Improved performance using lazy loading and optimized rendering.",
-      "Integrated REST APIs with clean state management architecture.",
-      "Ensured pixel-perfect responsive UI across mobile and desktop.",
-    ],
-    tech: ["React", "Tailwind CSS", "JavaScript", "REST APIs", "Git"],
-  },
-  {
-    role: "Frontend Intern",
-    company: "Small Fare",
-    duration: "Jul 2025 – Sep 2025",
+    duration: "Jan 2026 – Jul 2026",
+    location: "Remote",
     current: false,
     highlights: [
-      "Built reusable UI components using React and Tailwind CSS.",
-      "Worked on a SaaS product with real users and production constraints.",
-      "Collaborated with designers and backend engineers to ship features.",
-      "Improved UI consistency and cross-device responsiveness.",
+      "Developed full-stack web applications using React.js, Next.js, TypeScript, Node.js, Express.js, and MongoDB for multiple client projects.",
+      "Built and maintained an education platform by developing responsive user interfaces, REST APIs, and database integration.",
+      "Designed and developed a modern, responsive landing page with a focus on performance and user experience.",
+      "Contributed to a furniture e-commerce website by implementing reusable UI components and integrating backend APIs.",
+      "Worked on the DigiDukkan platform by shipping new features, improving performance, and collaborating with the team using Git.",
     ],
-    tech: ["React", "Tailwind CSS", "SaaS", "Git"],
+    tech: ["React.js", "Next.js", "TypeScript", "Node.js", "MongoDB", "Express.js"],
+  },
+  {
+    role: "Frontend Developer Intern",
+    company: "Small Fare",
+    duration: "2025",
+    location: "Remote",
+    current: false,
+    highlights: [
+      "Developed and enhanced multi-step payment workflows for a SaaS application using React.js.",
+      "Built responsive payment interfaces, including checkout, payment status, and transaction-related screens.",
+      "Integrated REST APIs to process payment requests and display transaction information.",
+      "Improved user experience by optimizing payment flow navigation and creating reusable React components.",
+    ],
+    tech: ["React.js","Tailwind CSS", "SaaS", "Reusable Components", "Git"],
   },
   {
     role: "Freelance Developer",
     company: "Self-Employed",
-    duration: "2025",
+    duration: "Jul 2025 – Sep 2025",
+    location: "Remote",
     current: false,
     highlights: [
-      "Delivered custom websites and web apps for multiple clients.",
-      "Managed full development lifecycle from requirement gathering to deployment.",
-      "Focused on clean UI, responsiveness, and performance optimization.",
-      "Deployed projects using Vercel, Netlify, and Render.",
+      "Developed and deployed responsive client websites from requirements gathering to deployment.",
+      "Focused on performance, scalability, and modern UI design throughout the delivery process.",
     ],
-    tech: ["React", "JavaScript", "Tailwind", "Deployments"],
+    tech: ["React.js","Tailwind CSS", "Responsive Design", "Performance", "Deployment"],
   },
 ];
 
@@ -70,7 +71,7 @@ const Experience = () => {
             viewport={{ once: true }}
             className="text-gray-400 text-sm sm:text-lg font-medium max-w-2xl px-4"
           >
-            Professional journey building scalable, production-ready web applications with modern technologies.
+            Professional journey building scalable, production-ready web applications across full-stack and frontend roles.
           </motion.p>
         </div>
 
@@ -117,10 +118,15 @@ const Experience = () => {
                     </h4>
                   </div>
 
-                  <div className="flex items-center gap-2 bg-white/[0.03] border border-white/[0.05] px-4 py-1.5 rounded-full w-fit">
-                    {exp.current && <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />}
-                    <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">
-                      {exp.duration}
+                  <div className="flex flex-col items-start sm:items-end gap-2">
+                    <div className="flex items-center gap-2 bg-white/[0.03] border border-white/[0.05] px-4 py-1.5 rounded-full w-fit">
+                      {exp.current && <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />}
+                      <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">
+                        {exp.duration}
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-black text-gray-600 uppercase tracking-[0.2em]">
+                      {exp.location}
                     </span>
                   </div>
                 </div>
