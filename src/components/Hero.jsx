@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { FaArrowDown, FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import profileImage from "../assets/profile.jpg";
@@ -145,13 +145,16 @@ const Hero = () => {
           >
             {[
               { icon: <FaGithub />, link: "https://github.com/nikilkumarks" },
-              { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/nikil-kumar-k-s-90434a2b1/" }
+              { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/nikil-kumar-k-s-90434a2b1/" },
+              { icon: <SiLeetcode />, link: "https://leetcode.com/u/nikilkumarks/", label: "LeetCode" }
             ].map((social, i) => (
               <a
                 key={i}
                 href={social.link}
                 target="_blank"
                 rel="noreferrer"
+                aria-label={social.label || `Social link ${i + 1}`}
+                title={social.label || `Social link ${i + 1}`}
                 className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/[0.03] border border-white/10 text-gray-400 hover:text-white hover:border-white/30 hover:bg-white/[0.08] transition-all duration-300 shadow-sm"
               >
                 <span className="text-2xl">{social.icon}</span>
